@@ -1,0 +1,5 @@
+- Email confirmation
+- SMS notifications
+- QR code verification
+- Digital signatures
+- Online payment integration (if applicable)

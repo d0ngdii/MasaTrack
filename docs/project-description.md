@@ -1,0 +1,1 @@
+Mt. Masaraga Permit Management System (MASATRACK) is a web-based application designed for DENR–CENRO Guinobatan to automate the application, approval, scheduling, and permit generation process for hikers visiting Mt. Masaraga.

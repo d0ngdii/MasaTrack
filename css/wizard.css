@@ -1,0 +1,345 @@
+/* ==========================================
+   APPLICATION WIZARD
+========================================== */
+
+#wizardContainer {
+  max-width: 1100px;
+
+  margin: 60px auto;
+
+  background: #fff;
+
+  border-radius: 15px;
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+
+  padding: 40px;
+}
+
+/* ==========================================
+   WIZARD STEPPER
+========================================== */
+
+.stepper {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 50px;
+
+  position: relative;
+}
+
+.stepper::before {
+  content: "";
+
+  position: absolute;
+
+  top: 20px;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: #ddd;
+
+  z-index: 1;
+}
+
+.step-item {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  width: 16.6%;
+}
+
+.circle {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: #ddd;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-weight: bold;
+
+  color: white;
+
+  transition: 0.3s;
+}
+
+.step-item.active .circle {
+  background: #2e7d32;
+}
+
+.step-item.completed .circle {
+  background: #43a047;
+}
+
+.step-label {
+  margin-top: 10px;
+
+  text-align: center;
+
+  font-size: 13px;
+}
+
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+}
+
+.form-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  padding: 14px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+}
+
+.navigation {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-top: 40px;
+}
+
+.navigation button {
+  padding: 14px 28px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+.next-btn {
+  background: #2e7d32;
+
+  color: white;
+}
+
+.prev-btn {
+  background: #ddd;
+}
+
+/* ==========================================
+   GROUP MEMBERS
+========================================== */
+
+.group-summary {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 30px;
+}
+
+.leader-box {
+  flex: 2;
+
+  background: #f5f7f9;
+
+  padding: 20px;
+
+  border-radius: 12px;
+}
+
+.hiker-counter {
+  flex: 1;
+
+  text-align: center;
+
+  background: #e8f5e9;
+
+  padding: 20px;
+
+  border-radius: 12px;
+}
+
+.hiker-counter h1 {
+  color: #2e7d32;
+
+  font-size: 42px;
+}
+
+.member-card {
+  background: white;
+
+  border: 1px solid #ddd;
+
+  border-radius: 12px;
+
+  padding: 25px;
+
+  margin-bottom: 20px;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.member-card h3 {
+  margin-bottom: 20px;
+
+  color: #2e7d32;
+}
+
+.remove-member {
+  margin-top: 20px;
+
+  background: #d32f2f;
+
+  color: white;
+
+  border: none;
+
+  padding: 10px 20px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+#addMemberBtn {
+  margin-top: 20px;
+}
+
+/* ==========================================
+   SCHEDULE
+========================================== */
+
+.schedule-container {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 30px;
+
+  margin: 30px 0;
+}
+
+.availability-card {
+  background: #f5f7f9;
+
+  padding: 30px;
+
+  border-radius: 12px;
+
+  border-left: 6px solid #2e7d32;
+}
+
+.availability-card h3 {
+  margin-bottom: 20px;
+
+  color: #2e7d32;
+}
+
+#availabilityMessage {
+  margin-top: 20px;
+
+  font-weight: bold;
+}
+
+/* ==========================================
+   REVIEW
+========================================== */
+
+.review-section {
+  background: #fff;
+
+  border: 1px solid #ddd;
+
+  border-radius: 10px;
+
+  padding: 20px;
+
+  margin-bottom: 20px;
+}
+
+.review-section h3 {
+  color: #2e7d32;
+
+  margin-bottom: 15px;
+}
+
+.review-item {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+}
+
+.review-label {
+  font-weight: bold;
+}
+
+.terms-box {
+  margin: 30px 0;
+
+  padding: 20px;
+
+  background: #f5f7f9;
+
+  border-radius: 10px;
+}
+
+.submit-btn {
+  background: #2e7d32;
+
+  color: white;
+
+  border: none;
+
+  padding: 12px 30px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+}

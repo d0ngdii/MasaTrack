@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Mt. Masaraga Permit Application System</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/wizard.css" />
+    <link rel="stylesheet" href="css/calendar.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- ===========================
+     HEADER
+=========================== -->
+
+    <header>
+      <div class="logo-section">
+        <img src="assets/logo.png" alt="Mt. Masaraga Logo" />
+
+        <div>
+          <h2>Mt. Masaraga</h2>
+
+          <p>Protected Landscape Permit System</p>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+
+          <li><a href="#about">About</a></li>
+
+          <li><a href="#requirements">Requirements</a></li>
+
+          <li><a href="verify.html">Verify Permit</a></li>
+
+          <li>
+            <button id="applyBtn">Apply Now</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ===========================
+     HERO
+=========================== -->
+
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>
+          Mt. Masaraga
+          <br />
+          Online Permit Application
+        </h1>
+
+        <p>
+          Apply online for hiking permits, reserve your preferred schedule, and
+          receive your permit faster.
+        </p>
+
+        <button id="heroApply">Apply for Permit</button>
+      </div>
+    </section>
+
+    <!-- ===========================
+     ABOUT
+=========================== -->
+
+    <section id="about" class="about">
+      <h2>About Mt. Masaraga</h2>
+
+      <p>
+        Mt. Masaraga is one of Albay's protected landscapes known for its rich
+        biodiversity, scenic trails, and breathtaking summit views. The
+        Protected Area Management Office requires all hikers to secure an
+        official climbing permit before entering the mountain.
+      </p>
+    </section>
+
+    <!-- ===========================
+     REQUIREMENTS
+=========================== -->
+
+    <section id="requirements">
+      <h2>Permit Requirements</h2>
+
+      <div class="requirements-grid">
+        <div class="card">
+          <h3>Government ID</h3>
+
+          <p>Submit a valid government-issued ID.</p>
+        </div>
+
+        <div class="card">
+          <h3>Medical Certificate</h3>
+
+          <p>Required for verifying physical fitness.</p>
+        </div>
+
+        <div class="card">
+          <h3>Waiver Form</h3>
+
+          <p>Agree to the hiking terms and conditions.</p>
+        </div>
+
+        <div class="card">
+          <h3>Environmental Fee</h3>
+
+          <p>Pay the required conservation fee.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================
+     SAFETY
+=========================== -->
+
+    <section class="safety">
+      <h2>Safety Reminders</h2>
+
+      <ul>
+        <li>Register before entering the protected area.</li>
+
+        <li>Bring enough drinking water.</li>
+
+        <li>Leave No Trace.</li>
+
+        <li>Follow the assigned trail guide.</li>
+
+        <li>Respect wildlife and protected habitats.</li>
+      </ul>
+    </section>
+
+    <!-- ===========================
+     APPLICATION WIZARD
+=========================== -->
+
+    <section id="applicationWizard" class="hidden">
+      <div id="wizardContainer">
+        <div class="stepper">
+          <div class="step-item active">
+            <div class="circle">1</div>
+
+            <div class="step-label">Personal</div>
+          </div>
+
+          <div class="step-item">
+            <div class="circle">2</div>
+
+            <div class="step-label">Emergency</div>
+          </div>
+
+          <div class="step-item">
+            <div class="circle">3</div>
+
+            <div class="step-label">Medical</div>
+          </div>
+
+          <div class="step-item">
+            <div class="circle">4</div>
+
+            <div class="step-label">Group</div>
+          </div>
+
+          <div class="step-item">
+            <div class="circle">5</div>
+
+            <div class="step-label">Schedule</div>
+          </div>
+
+          <div class="step-item">
+            <div class="circle">6</div>
+
+            <div class="step-label">Review</div>
+          </div>
+        </div>
+
+        <!-- STEP 1 -->
+
+        <div class="step active" id="step1">
+          <h2>Personal Information</h2>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label>First Name</label>
+
+              <input type="text" id="firstName" />
+            </div>
+
+            <div class="form-group">
+              <label>Middle Name</label>
+
+              <input type="text" id="middleName" />
+            </div>
+
+            <div class="form-group">
+              <label>Last Name</label>
+
+              <input type="text" id="lastName" />
+            </div>
+
+            <div class="form-group">
+              <label>Suffix</label>
+
+              <input type="text" id="suffix" />
+            </div>
+
+            <div class="form-group">
+              <label>Gender</label>
+
+              <select id="gender">
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Birth Date</label>
+
+              <input type="date" id="birthDate" />
+            </div>
+
+            <div class="form-group">
+              <label>Age</label>
+
+              <input type="number" id="age" readonly />
+            </div>
+
+            <div class="form-group">
+              <label>Civil Status</label>
+
+              <select id="civilStatus">
+                <option>Single</option>
+                <option>Married</option>
+                <option>Widowed</option>
+                <option>Divorced</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Nationality</label>
+
+              <input id="nationality" />
+            </div>
+
+            <div class="form-group">
+              <label>Religion</label>
+
+              <input id="religion" />
+            </div>
+
+            <div class="form-group">
+              <label>Contact Number</label>
+
+              <input id="contactNumber" />
+            </div>
+
+            <div class="form-group">
+              <label>Email Address</label>
+
+              <input type="email" id="email" />
+            </div>
+          </div>
+
+          <div class="navigation">
+            <button class="next-btn" onclick="nextStep()">Next →</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step" id="step2">
+          <h2>Emergency Contact</h2>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Contact Name</label>
+              <input type="text" id="emergencyName" />
+            </div>
+
+            <div class="form-group">
+              <label>Relationship</label>
+              <input type="text" id="relationship" />
+            </div>
+
+            <div class="form-group">
+              <label>Contact Number</label>
+              <input type="text" id="emergencyContact" />
+            </div>
+
+            <div class="form-group">
+              <label>Address</label>
+              <input type="text" id="emergencyAddress" />
+            </div>
+          </div>
+
+          <div class="navigation">
+            <button class="prev-btn" onclick="previousStep()">
+              ← Previous
+            </button>
+
+            <button class="next-btn" onclick="nextStep()">Next →</button>
+          </div>
+        </div>
+
+        <!-- ==========================================
+     STEP 3 - MEDICAL INFORMATION
+========================================== -->
+
+        <div class="step" id="step3">
+          <h2>Medical Information</h2>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Currently Under Medical Treatment?</label>
+              <select id="medicalTreatment">
+                <option value="">Select</option>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Medical Condition / Details</label>
+              <input
+                type="text"
+                id="medicalDetails"
+                placeholder="If none, leave blank"
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Blood Type</label>
+              <select id="bloodType">
+                <option value="">Select Blood Type</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+                <option>O+</option>
+                <option>O-</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Allergies</label>
+              <input
+                type="text"
+                id="allergies"
+                placeholder="Food, medicine, etc."
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Height (cm)</label>
+              <input type="number" id="height" placeholder="170" />
+            </div>
+
+            <div class="form-group">
+              <label>Weight (kg)</label>
+              <input type="number" id="weight" placeholder="65" />
+            </div>
+
+            <div class="form-group">
+              <label>Body Type</label>
+              <select id="bodyType">
+                <option value="">Select</option>
+                <option>Slim</option>
+                <option>Average</option>
+                <option>Athletic</option>
+                <option>Heavy</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Distinguishing Marks</label>
+              <input
+                type="text"
+                id="birthMarks"
+                placeholder="Tattoo, scar, mole, etc."
+              />
+            </div>
+
+            <div class="form-group">
+              <label>Complexion</label>
+              <select id="complexion">
+                <option value="">Select</option>
+                <option>Fair</option>
+                <option>Light</option>
+                <option>Medium</option>
+                <option>Morena</option>
+                <option>Dark</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="navigation">
+            <button class="prev-btn" onclick="previousStep()">
+              ← Previous
+            </button>
+
+            <button class="next-btn" onclick="nextStep()">Next →</button>
+          </div>
+        </div>
+
+        <!-- ==========================================
+     STEP 4 - GROUP MEMBERS
+========================================== -->
+
+        <div class="step" id="step4">
+          <h2>Group Members</h2>
+
+          <div class="group-summary">
+            <div class="leader-box">
+              <h3>Group Leader</h3>
+
+              <p id="leaderName">Leader information will appear here.</p>
+            </div>
+
+            <div class="hiker-counter">
+              <h3>Total Hikers</h3>
+
+              <h1><span id="totalHikers">1</span> / 8</h1>
+            </div>
+          </div>
+
+          <hr />
+
+          <div id="membersContainer">
+            <!-- Member cards will appear here -->
+          </div>
+
+          <button type="button" id="addMemberBtn" class="next-btn">
+            + Add Member
+          </button>
+
+          <div class="navigation">
+            <button class="prev-btn" onclick="previousStep()">
+              ← Previous
+            </button>
+
+            <button class="next-btn" onclick="nextStep()">Next →</button>
+          </div>
+        </div>
+
+        <!-- ==========================================
+     STEP 5 - CLIMB SCHEDULE
+========================================== -->
+
+        <div class="step" id="step5">
+          <h2>Climb Schedule</h2>
+
+          <div class="schedule-container">
+            <div class="form-group">
+              <label>Select Climb Date</label>
+
+              <input type="date" id="climbDate" />
+            </div>
+
+            <div class="availability-card">
+              <h3>Availability</h3>
+
+              <p>
+                Remaining Slots:
+                <strong id="remainingSlots">-</strong>
+              </p>
+
+              <p>
+                Your Group:
+                <strong id="groupSizeDisplay">1</strong>
+              </p>
+
+              <p id="availabilityMessage">Please select a date.</p>
+            </div>
+          </div>
+
+          <div class="navigation">
+            <button class="prev-btn" onclick="previousStep()">
+              ← Previous
+            </button>
+
+            <button
+              class="next-btn"
+              id="scheduleNextBtn"
+              onclick="nextStep()"
+              disabled
+            >
+              Next →
+            </button>
+          </div>
+        </div>
+
+        <!-- ==========================================
+     STEP 6 - REVIEW & SUBMIT
+========================================== -->
+
+        <div class="step" id="step6">
+          <h2>Review Your Application</h2>
+
+          <div id="reviewContainer">
+            <!-- Generated automatically -->
+          </div>
+
+          <div class="terms-box">
+            <label>
+              <input type="checkbox" id="agreeTerms" />
+
+              I certify that all information provided is true and I agree to
+              follow the rules and regulations of Mt. Masaraga Protected
+              Landscape.
+            </label>
+          </div>
+
+          <div class="navigation">
+            <button class="prev-btn" onclick="previousStep()">
+              ← Previous
+            </button>
+
+            <button class="submit-btn" id="submitApplicationBtn">
+              Submit Application
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===========================
+     FOOTER
+=========================== -->
+
+    <footer>
+      <p>DENR Region V • CENRO Guinobatan</p>
+
+      <p>Mt. Masaraga Protected Landscape</p>
+
+      <p>© 2026 MASATRACK</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/api.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/wizard.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/group.js"></script>
+    <script src="js/schedule.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/review.js"></script>
+    <script src="js/submit.js"></script>
+    <script src="js/wizard.js"></script>
+  </body>
+</html>
