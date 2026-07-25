@@ -1,0 +1,128 @@
+/*************************************************
+ * MASATRACK
+ * Responsive Layout
+ *************************************************/
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#wizardContainer {
+  width: 95%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.receipt-card {
+  width: 95%;
+  margin: auto;
+}
+
+.form-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    width: 100%;
+
+    min-height: 48px;
+
+    font-size: 16px;
+  }
+}
+
+.navigation {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    flex-direction: column;
+  }
+
+  .navigation button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  #applicationWizard {
+    padding: 20px 10px;
+  }
+
+  .step {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .receipt-row {
+    flex-direction: column;
+
+    gap: 5px;
+  }
+
+  .receipt-buttons {
+    flex-direction: column;
+  }
+
+  .receipt-buttons button {
+    width: 100%;
+  }
+}
+
+table {
+  max-width: 100%;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+canvas {
+  max-width: 100%;
+}
+
+button {
+  max-width: 100%;
+}
