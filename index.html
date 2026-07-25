@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/calendar.css" />
     <link rel="stylesheet" href="css/modal.css" />
     <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/receipt.css" />
 
     <!-- Google Fonts -->
     <link
@@ -537,6 +538,58 @@
       </div>
     </section>
 
+    <!-- ==========================
+     APPLICATION RECEIPT
+========================== -->
+
+    <section id="receiptSection" class="hidden">
+      <div class="receipt-card">
+        <div class="receipt-header">
+          <h1>Application Submitted</h1>
+
+          <p>Thank you for registering for your Mt. Masaraga climb.</p>
+        </div>
+
+        <div class="receipt-body">
+          <div class="receipt-row">
+            <strong>Receipt Number</strong>
+            <span id="receiptNumber"></span>
+          </div>
+
+          <div class="receipt-row">
+            <strong>Applicant</strong>
+            <span id="receiptApplicant"></span>
+          </div>
+
+          <div class="receipt-row">
+            <strong>Climb Date</strong>
+            <span id="receiptDate"></span>
+          </div>
+
+          <div class="receipt-row">
+            <strong>Total Hikers</strong>
+            <span id="receiptHikers"></span>
+          </div>
+
+          <div class="receipt-row">
+            <strong>Status</strong>
+
+            <span class="status pending"> Pending Review </span>
+          </div>
+        </div>
+
+        <div id="receiptQR"></div>
+
+        <div class="receipt-buttons">
+          <button id="printReceipt">🖨 Print Receipt</button>
+
+          <button id="downloadReceipt">📄 Download PDF</button>
+
+          <button id="backHome">Home</button>
+        </div>
+      </div>
+    </section>
+
     <!-- ===========================
      FOOTER
 =========================== -->
@@ -551,19 +604,6 @@
 
     <!-- JAVASCRIPT -->
 
-    <!-- <script src="js/api.js"></script>
-    <script src="js/storage.js"></script>
-    <script src="js/validation.js"></script>
-    <script src="js/calendar.js"></script>
-    <script src="js/modal.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/group.js"></script>
-    <script src="js/schedule.js"></script>
-    <script src="js/data.js"></script>
-    <script src="js/review.js"></script>
-    <script src="js/submit.js"></script>
-    <script src="js/wizard.js"></script> -->
-
     <script src="js/api.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/validation.js"></script>
@@ -573,6 +613,7 @@
     <script src="js/schedule.js"></script>
     <script src="js/data.js"></script>
     <script src="js/review.js"></script>
+    <script src="js/receipt.js"></script>
     <script src="js/submit.js"></script>
     <script src="js/wizard.js"></script>
     <script src="js/app.js"></script>

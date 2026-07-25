@@ -40,10 +40,7 @@ async function submitApplication() {
     console.log(result);
 
     if (result.success) {
-      alert(
-        "Application Submitted!\n\nReceipt Number: " + result.receiptNumber,
-      );
-      location.reload();
+      showReceipt(result.receiptNumber, application);
     } else {
       alert(result.message || "Submission failed.");
     }
