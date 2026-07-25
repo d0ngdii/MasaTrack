@@ -47,10 +47,9 @@ function nextStep() {
     generateReview();
   }
 
-  window.scrollTo({
-    top: 0,
-
+  document.getElementById("applicationWizard").scrollIntoView({
     behavior: "smooth",
+    block: "start",
   });
 }
 
@@ -61,12 +60,10 @@ function previousStep() {
 
   showStep(currentStep);
 
-  window.scrollTo({
-    top: 0,
-
+  document.getElementById("applicationWizard").scrollIntoView({
     behavior: "smooth",
+    block: "start",
   });
-  
 }
 
 function updateStepper() {
