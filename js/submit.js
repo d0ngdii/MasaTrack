@@ -24,9 +24,12 @@ async function submitApplication() {
     formData.append("action", "submit");
     formData.append("payload", JSON.stringify(application));
 
-    const response = await fetch(API_URL, {
+    const response = await fetch("/api/submit", {
       method: "POST",
-      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(application),
     });
 
     const result = await response.json();
