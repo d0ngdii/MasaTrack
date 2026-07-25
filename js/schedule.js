@@ -36,24 +36,27 @@ async function checkSchedule() {
     remainingSlots.textContent = result.available;
 
     if (result.available >= groupSize) {
-      availabilityMessage.innerHTML = "✅ Schedule Available";
+      availabilityMessage.textContent = "✔ Schedule Available";
 
-      availabilityMessage.style.color = "green";
+      availabilityMessage.style.background = "#E8F5E9";
+      availabilityMessage.style.color = "#2E7D32";
 
       scheduleNextBtn.disabled = false;
     } else {
-      availabilityMessage.innerHTML = "❌ Not enough slots remaining.";
+      availabilityMessage.textContent = "✖ Schedule Full";
 
-      availabilityMessage.style.color = "red";
+      availabilityMessage.style.background = "#FFEBEE";
+      availabilityMessage.style.color = "#C62828";
 
       scheduleNextBtn.disabled = true;
     }
   } catch (error) {
     console.error(error);
 
-    availabilityMessage.innerHTML = error.message;
+    availabilityMessage.textContent = "Please select a date.";
 
-    availabilityMessage.style.color = "red";
+    availabilityMessage.style.background = "#F5F5F5";
+    availabilityMessage.style.color = "#555";
 
     scheduleNextBtn.disabled = true;
   }

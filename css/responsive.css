@@ -289,3 +289,31 @@ button {
     text-align: left;
   }
 }
+
+/*************************************************
+ * MOBILE SCHEDULE
+ *************************************************/
+
+@media (max-width: 768px) {
+  .schedule-container {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  .availability-card {
+    width: 100%;
+
+    padding: 20px;
+
+    border-left: none;
+
+    border-top: 5px solid #2e7d32;
+  }
+
+  #climbDate {
+    width: 100%;
+  }
+}
