@@ -1,4 +1,4 @@
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({
       success: false,
@@ -21,6 +21,16 @@ module.exports = async (req, res) => {
     const text = await upstream.text();
 
     res.setHeader("Content-Type", "application/json");
+
+    if (!text.trim().startsWith("{")) {
+      return res.status(502).json({
+        success: false,
+        message: "Apps Script returned HTML instead of JSON",
+        status: upstream.status,
+        preview: text.slice(0, 300),
+      });
+    }
+
     return res.status(200).send(text);
   } catch (error) {
     return res.status(500).json({
@@ -28,4 +38,4 @@ module.exports = async (req, res) => {
       message: error.toString(),
     });
   }
-};
+}

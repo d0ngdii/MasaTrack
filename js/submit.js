@@ -32,7 +32,10 @@ async function submitApplication() {
       body: JSON.stringify(application),
     });
 
-    const result = await response.json();
+    const text = await response.text();
+    console.log("RAW RESPONSE:", text);
+
+    const result = JSON.parse(text);
 
     console.log(result);
 
