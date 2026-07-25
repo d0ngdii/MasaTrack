@@ -229,3 +229,63 @@ button {
     transition: 0.35s;
   }
 }
+
+/*************************************************
+ * MOBILE NAVIGATION
+ *************************************************/
+
+.menu-toggle {
+  display: none;
+
+  background: none;
+
+  border: none;
+
+  font-size: 32px;
+
+  cursor: pointer;
+
+  color: #2e7d32;
+}
+
+@media (max-width: 768px) {
+  header {
+    position: relative;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+
+    position: absolute;
+
+    top: 100%;
+
+    left: 0;
+
+    width: 100%;
+
+    background: #fff;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+
+    padding: 20px;
+  }
+
+  nav.active {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  nav a {
+    width: 100%;
+
+    text-align: left;
+  }
+}
