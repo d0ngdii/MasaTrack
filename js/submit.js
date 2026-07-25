@@ -19,11 +19,6 @@ async function submitApplication() {
     submitButton.disabled = true;
     submitButton.textContent = "Submitting...";
 
-    const formData = new URLSearchParams();
-
-    formData.append("action", "submit");
-    formData.append("payload", JSON.stringify(application));
-
     const response = await fetch("/api/submit", {
       method: "POST",
       headers: {
@@ -32,10 +27,15 @@ async function submitApplication() {
       body: JSON.stringify(application),
     });
 
-    const text = await response.text();
-    console.log("RAW RESPONSE:", text);
+    const rawText = await response.text();
+    console.log("RAW RESPONSE:", rawText);
 
-    const result = JSON.parse(text);
+    let result;
+    try {
+      result = JSON.parse(rawText);
+    } catch (parseError) {
+      throw new Error("Server returned non-JSON response.");
+    }
 
     console.log(result);
 
@@ -43,14 +43,13 @@ async function submitApplication() {
       alert(
         "Application Submitted!\n\nReceipt Number: " + result.receiptNumber,
       );
-
       location.reload();
     } else {
-      alert(result.message);
+      alert(result.message || "Submission failed.");
     }
   } catch (error) {
     console.error(error);
-    alert("Unable to submit application.");
+    alert(error.message || "Unable to submit application.");
   } finally {
     submitButton.disabled = false;
     submitButton.textContent = "Submit Application";
