@@ -16,6 +16,11 @@ async function submitApplication() {
   const application = collectApplicationData();
 
   try {
+    showLoading(
+      "Submitting Application",
+
+      "Please wait while we save your application.",
+    );
     submitButton.disabled = true;
     submitButton.textContent = "Submitting...";
 
@@ -50,5 +55,6 @@ async function submitApplication() {
   } finally {
     submitButton.disabled = false;
     submitButton.textContent = "Submit Application";
+    hideLoading();
   }
 }

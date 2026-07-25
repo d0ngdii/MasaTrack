@@ -46,6 +46,12 @@ function nextStep() {
   if (currentStep === 6) {
     generateReview();
   }
+
+  window.scrollTo({
+    top: 0,
+
+    behavior: "smooth",
+  });
 }
 
 function previousStep() {
@@ -54,6 +60,13 @@ function previousStep() {
   currentStep--;
 
   showStep(currentStep);
+
+  window.scrollTo({
+    top: 0,
+
+    behavior: "smooth",
+  });
+  
 }
 
 function updateStepper() {

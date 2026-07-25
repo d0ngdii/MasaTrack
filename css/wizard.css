@@ -401,3 +401,71 @@
 
   cursor: pointer;
 }
+
+.loading-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.45);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  z-index: 99999;
+}
+
+.loading-box {
+  background: #fff;
+
+  padding: 35px;
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  width: 320px;
+}
+
+.spinner {
+  width: 55px;
+
+  height: 55px;
+
+  margin: auto auto 20px;
+
+  border: 6px solid #ddd;
+
+  border-top-color: #2e7d32;
+
+  border-radius: 50%;
+
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.step {
+  opacity: 0;
+
+  transform: translateX(20px);
+
+  transition: 0.35s;
+}
+
+.step.active {
+  opacity: 1;
+
+  transform: translateX(0);
+}
