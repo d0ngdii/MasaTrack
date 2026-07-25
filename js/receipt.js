@@ -29,6 +29,7 @@ function showReceipt(receiptNumber, application) {
 }
 
 function generateReceiptQR(receiptNumber) {
+  console.log("QRCode:", typeof QRCode);
   const container = document.getElementById("receiptQR");
 
   container.innerHTML = "";
