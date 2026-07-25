@@ -29,7 +29,7 @@ async function checkSchedule() {
     console.log("Checking date:", date);
     console.log("Group Size:", groupSize);
 
-    const result = await checkAvailability(date, groupSize);
+    const result = await window.checkAvailability(date, groupSize);
 
     console.log("API Response:", result);
 
