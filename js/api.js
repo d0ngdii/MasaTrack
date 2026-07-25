@@ -39,3 +39,6 @@ export default async function handler(req, res) {
     });
   }
 }
+
+window.API_URL = API_URL;
+window.checkAvailability = checkAvailability;
