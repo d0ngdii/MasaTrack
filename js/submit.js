@@ -18,28 +18,37 @@ async function submitApplication() {
   try {
     showLoading(
       "Submitting Application",
-
       "Please wait while we save your application.",
     );
+
     submitButton.disabled = true;
     submitButton.textContent = "Submitting...";
 
     const response = await fetch("/api/submit", {
       method: "POST",
+
       headers: {
         "Content-Type": "application/json",
       },
+
       body: JSON.stringify(application),
     });
 
+    // Check for HTTP errors
+    if (!response.ok) {
+      throw new Error(`Server Error (${response.status})`);
+    }
+
     const rawText = await response.text();
+
     console.log("RAW RESPONSE:", rawText);
 
     let result;
+
     try {
       result = JSON.parse(rawText);
-    } catch (parseError) {
-      throw new Error("Server returned non-JSON response.");
+    } catch {
+      throw new Error("Server returned an invalid response.");
     }
 
     console.log(result);
@@ -47,14 +56,16 @@ async function submitApplication() {
     if (result.success) {
       showReceipt(result.receiptNumber, application);
     } else {
-      alert(result.message || "Submission failed.");
+      throw new Error(result.message || "Submission failed.");
     }
   } catch (error) {
     console.error(error);
-    alert(error.message || "Unable to submit application.");
+
+    alert(error.message);
   } finally {
+    hideLoading();
+
     submitButton.disabled = false;
     submitButton.textContent = "Submit Application";
-    hideLoading();
   }
 }
