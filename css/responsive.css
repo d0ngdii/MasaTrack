@@ -126,3 +126,106 @@ canvas {
 button {
   max-width: 100%;
 }
+
+@media (max-width: 768px) {
+  .stepper {
+    overflow-x: auto;
+
+    display: flex;
+
+    gap: 20px;
+
+    padding-bottom: 10px;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .step-item {
+    min-width: 80px;
+
+    flex-shrink: 0;
+  }
+
+  .step-label {
+    font-size: 12px;
+
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .schedule-grid {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  .schedule-card {
+    width: 100%;
+  }
+}
+/*************************************************
+ * MOBILE PROGRESS
+ *************************************************/
+
+.mobile-progress {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-progress {
+    display: block;
+
+    margin-bottom: 25px;
+  }
+
+  .stepper {
+    display: none;
+  }
+
+  .mobile-progress-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 10px;
+  }
+
+  #mobileStepNumber {
+    font-weight: bold;
+
+    color: #2e7d32;
+  }
+
+  #mobileStepTitle {
+    font-size: 14px;
+
+    color: #666;
+  }
+
+  .mobile-progress-bar {
+    width: 100%;
+
+    height: 8px;
+
+    background: #e5e5e5;
+
+    border-radius: 50px;
+
+    overflow: hidden;
+  }
+
+  .mobile-progress-fill {
+    height: 100%;
+
+    width: 16.66%;
+
+    background: #2e7d32;
+
+    transition: 0.35s;
+  }
+}

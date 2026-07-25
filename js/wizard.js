@@ -33,6 +33,7 @@ function showStep(step) {
   document.getElementById("step" + step).classList.add("active");
 
   updateStepper();
+  updateMobileProgress();
 }
 
 function nextStep() {
@@ -73,4 +74,29 @@ function updateStepper() {
       item.classList.add("active");
     }
   });
+}
+
+function updateMobileProgress() {
+  const titles = [
+    "Personal",
+
+    "Emergency",
+
+    "Medical",
+
+    "Group",
+
+    "Schedule",
+
+    "Review",
+  ];
+
+  document.getElementById("mobileStepNumber").textContent =
+    `Step ${currentStep} of 6`;
+
+  document.getElementById("mobileStepTitle").textContent =
+    titles[currentStep - 1];
+
+  document.getElementById("mobileProgressFill").style.width =
+    (currentStep / 6) * 100 + "%";
 }
