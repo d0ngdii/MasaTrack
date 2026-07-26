@@ -9,7 +9,7 @@ submitButton.addEventListener("click", submitApplication);
 
 async function submitApplication() {
   if (!agreeTerms.checked) {
-    alert("Please accept the Terms and Conditions.");
+    showToast("Please accept the Terms and Conditions.", "warning");
     return;
   }
 
@@ -54,14 +54,18 @@ async function submitApplication() {
     console.log(result);
 
     if (result.success) {
-      showReceipt(result.receiptNumber, application);
+      showToast("Application submitted successfully!", "success");
+
+      setTimeout(() => {
+        showReceipt(result.receiptNumber, application);
+      }, 1200);
     } else {
       throw new Error(result.message || "Submission failed.");
     }
   } catch (error) {
     console.error(error);
 
-    alert(error.message);
+    showToast(error.message, "error");
   } finally {
     hideLoading();
 

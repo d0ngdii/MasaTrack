@@ -422,3 +422,19 @@ button:focus {
     gap: 12px;
   }
 }
+
+@media (max-width: 768px) {
+  #toastContainer {
+    left: 15px;
+
+    right: 15px;
+
+    top: 15px;
+  }
+
+  .toast {
+    min-width: auto;
+
+    width: 100%;
+  }
+}

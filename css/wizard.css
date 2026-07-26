@@ -469,3 +469,79 @@
 
   transform: translateX(0);
 }
+
+/*************************************************
+ * TOAST
+ *************************************************/
+
+#toastContainer {
+  position: fixed;
+
+  top: 20px;
+
+  right: 20px;
+
+  z-index: 100000;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.toast {
+  min-width: 320px;
+
+  max-width: 420px;
+
+  padding: 18px 20px;
+
+  border-radius: 12px;
+
+  color: #fff;
+
+  font-weight: 600;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+  animation: slideIn 0.35s ease;
+}
+
+.toast.success {
+  background: #2e7d32;
+}
+
+.toast.error {
+  background: #c62828;
+}
+
+.toast.warning {
+  background: #ef6c00;
+}
+
+.toast.info {
+  background: #1565c0;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+
+    transform: translateX(100%);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+
+    transform: translateX(120%);
+  }
+}
