@@ -33,7 +33,7 @@ function updateCounter() {
   }
 }
 
-function addMember() {
+function addMember(member = {}) {
   if (groupMembers.length >= 7) {
     alert("Maximum of 8 hikers per permit.");
 

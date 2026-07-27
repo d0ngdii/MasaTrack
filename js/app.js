@@ -1,3 +1,9 @@
+document.addEventListener(
+  "DOMContentLoaded",
+
+  checkSavedApplication,
+);
+
 const birthDate = document.getElementById("birthDate");
 
 const age = document.getElementById("age");
@@ -21,3 +27,142 @@ birthDate.addEventListener("change", () => {
 document.getElementById("firstName").addEventListener("input", updateLeader);
 
 document.getElementById("lastName").addEventListener("input", updateLeader);
+
+function autoSaveApplication() {
+  const application = collectApplicationData();
+
+  application.currentStep = currentStep;
+
+  application.lastSaved = new Date().toISOString();
+
+  saveApplication(application);
+}
+
+document.querySelectorAll("input, select, textarea").forEach((field) => {
+  field.addEventListener(
+    "input",
+
+    autoSaveApplication,
+  );
+
+  field.addEventListener(
+    "change",
+
+    autoSaveApplication,
+  );
+});
+
+function restoreApplication() {
+  const saved = loadApplication();
+
+  if (!saved) return;
+
+  /********************************************
+   * PERSONAL INFORMATION
+   ********************************************/
+
+  firstName.value = saved.firstName || "";
+  middleName.value = saved.middleName || "";
+  lastName.value = saved.lastName || "";
+  suffix.value = saved.suffix || "";
+
+  gender.value = saved.gender || "";
+
+  birthDate.value = saved.birthDate || "";
+  age.value = saved.age || "";
+
+  civilStatus.value = saved.civilStatus || "";
+
+  nationality.value = saved.nationality || "";
+  religion.value = saved.religion || "";
+
+  contactNumber.value = saved.contactNumber || "";
+  email.value = saved.email || "";
+
+  address.value = saved.address || "";
+
+  organization.value = saved.organization || "";
+
+  /********************************************
+   * EMERGENCY CONTACT
+   ********************************************/
+
+  emergencyName.value = saved.emergencyName || "";
+
+  emergencyRelationship.value = saved.emergencyRelationship || "";
+
+  emergencyContact.value = saved.emergencyContact || "";
+
+  emergencyAddress.value = saved.emergencyAddress || "";
+
+  /********************************************
+   * MEDICAL INFORMATION
+   ********************************************/
+
+  underMedication.value = saved.underMedication || "";
+
+  medicalCondition.value = saved.medicalCondition || "";
+
+  allergies.value = saved.allergies || "";
+
+  bloodType.value = saved.bloodType || "";
+
+  /********************************************
+   * CLIMB SCHEDULE
+   ********************************************/
+
+  climbDate.value = saved.climbDate || "";
+
+  entryPoint.value = saved.entryPoint || "";
+
+  exitPoint.value = saved.exitPoint || "";
+
+  /********************************************
+   * TERMS
+   ********************************************/
+
+  agreeTerms.checked = saved.agreeTerms || false;
+
+  /********************************************
+   * GROUP MEMBERS
+   ********************************************/
+
+  if (saved.groupMembers && saved.groupMembers.length > 0) {
+    groupMembers = [];
+
+    groupList.innerHTML = "";
+
+    saved.groupMembers.forEach((member) => {
+      addMember(member);
+    });
+  }
+
+  /********************************************
+   * CURRENT STEP
+   ********************************************/
+
+  currentStep = saved.currentStep || 1;
+
+  showStep(currentStep);
+
+  /********************************************
+   * RELOAD SCHEDULE AVAILABILITY
+   ********************************************/
+
+  if (saved.climbDate) {
+    checkSchedule();
+  }
+}
+
+// Auto-save every 30 seconds
+setInterval(() => {
+  autoSaveApplication();
+}, 30000);
+
+window.addEventListener("beforeunload", (event) => {
+  if (currentStep > 1) {
+    event.preventDefault();
+
+    event.returnValue = "";
+  }
+});

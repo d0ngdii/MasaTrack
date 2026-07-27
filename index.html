@@ -568,13 +568,43 @@
       </div>
     </section>
 
-    <div id="loadingOverlay" class="loading-overlay hidden">
-      <div class="loading-box">
-        <div class="spinner"></div>
+    <!-- ==========================================
+     RESUME APPLICATION MODAL
+========================================== -->
 
-        <h3 id="loadingTitle">Processing...</h3>
+    <div id="resumeModal" class="resume-overlay hidden">
+      <div class="resume-card">
+        <div class="resume-icon">🏔️</div>
 
-        <p id="loadingMessage">Please wait.</p>
+        <h2 id="resumeTitle">Resume Previous Application?</h2>
+
+        <p>We found an unfinished application. Continue where you left off.</p>
+
+        <div class="resume-info">
+          <div class="resume-row">
+            <span>Last Saved</span>
+            <strong id="lastSavedTime">-</strong>
+          </div>
+
+          <div class="resume-row">
+            <span>Progress</span>
+            <strong id="progressText">Step 1 of 6</strong>
+          </div>
+
+          <div class="resume-progress">
+            <div id="resumeProgressFill" class="resume-progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="resume-buttons">
+          <button id="continueApplicationBtn" class="primary-btn">
+            Continue Application
+          </button>
+
+          <button id="newApplicationBtn" class="secondary-btn">
+            Start New
+          </button>
+        </div>
       </div>
     </div>
 

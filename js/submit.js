@@ -58,6 +58,8 @@ async function submitApplication() {
 
       setTimeout(() => {
         showReceipt(result.receiptNumber, application);
+        clearApplication();
+        window.onbeforeunload = null;
       }, 1200);
     } else {
       throw new Error(result.message || "Submission failed.");
@@ -72,4 +74,29 @@ async function submitApplication() {
     submitButton.disabled = false;
     submitButton.textContent = "Submit Application";
   }
+}
+
+/*************************************************
+ * MASATRACK
+ * Auto Save
+ *************************************************/
+
+const APPLICATION_STORAGE_KEY = "masatrack_application";
+
+function saveApplication(data) {
+  localStorage.setItem(
+    APPLICATION_STORAGE_KEY,
+
+    JSON.stringify(data),
+  );
+}
+
+function loadApplication() {
+  const saved = localStorage.getItem(APPLICATION_STORAGE_KEY);
+
+  return saved ? JSON.parse(saved) : null;
+}
+
+function clearApplication() {
+  localStorage.removeItem(APPLICATION_STORAGE_KEY);
 }

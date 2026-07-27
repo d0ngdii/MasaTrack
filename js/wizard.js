@@ -57,6 +57,7 @@ function previousStep() {
   if (currentStep <= 1) return;
 
   currentStep--;
+  autoSaveApplication();
 
   showStep(currentStep);
 
