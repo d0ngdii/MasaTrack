@@ -451,7 +451,7 @@
 }
 
 .hidden {
-    display: none !important;
+  display: none !important;
 }
 
 .step {
@@ -690,4 +690,64 @@
   background: linear-gradient(90deg, #2e7d32, #4caf50);
 
   transition: 0.4s;
+}
+
+/*************************************************
+ * LOADING OVERLAY
+ *************************************************/
+
+.loading-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.45);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  z-index: 9999;
+}
+
+.loading-card {
+  background: #fff;
+
+  width: 320px;
+
+  border-radius: 18px;
+
+  padding: 30px;
+
+  text-align: center;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.loading-spinner {
+  width: 55px;
+
+  height: 55px;
+
+  margin: 0 auto 20px;
+
+  border: 6px solid #e5e5e5;
+
+  border-top: 6px solid #2e7d32;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hidden {
+  display: none !important;
 }
