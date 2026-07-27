@@ -55,13 +55,7 @@ document
 document.getElementById("newApplicationBtn").addEventListener("click", () => {
   clearApplication();
 
-  document.getElementById("applicationForm").reset();
-
-  currentStep = 1;
-
-  showStep(1);
-
-  resumeModal.classList.add("hidden");
+  location.reload();
 });
 
 document.addEventListener("DOMContentLoaded", checkSavedApplication);
