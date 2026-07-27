@@ -1,9 +1,8 @@
-const overlay = document.getElementById("loadingOverlay");
-
-const loadingTitle = document.getElementById("loadingTitle");
-const loadingMessage = document.getElementById("loadingMessage");
-
 function showLoading(title, message) {
+  const overlay = document.getElementById("loadingOverlay");
+  const loadingTitle = document.getElementById("loadingTitle");
+  const loadingMessage = document.getElementById("loadingMessage");
+
   if (!overlay) {
     console.error("loadingOverlay not found.");
     return;
@@ -16,6 +15,8 @@ function showLoading(title, message) {
 }
 
 function hideLoading() {
+  const overlay = document.getElementById("loadingOverlay");
+
   if (!overlay) return;
 
   overlay.classList.add("hidden");
