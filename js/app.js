@@ -1,8 +1,4 @@
-document.addEventListener(
-  "DOMContentLoaded",
 
-  checkSavedApplication,
-);
 
 const birthDate = document.getElementById("birthDate");
 
