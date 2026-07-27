@@ -1,5 +1,3 @@
-
-
 const birthDate = document.getElementById("birthDate");
 
 const age = document.getElementById("age");
@@ -27,8 +25,21 @@ document.getElementById("lastName").addEventListener("input", updateLeader);
 function autoSaveApplication() {
   const application = collectApplicationData();
 
-  application.currentStep = currentStep;
+  // Determine if the user has actually started the application
+  const hasData = [
+    application.firstName,
+    application.lastName,
+    application.contactNumber,
+    application.email,
+    application.birthDate,
+    application.address,
+  ].some((value) => value && value.toString().trim() !== "");
 
+  if (!hasData) {
+    return;
+  }
+
+  application.currentStep = currentStep;
   application.lastSaved = new Date().toISOString();
 
   saveApplication(application);
@@ -152,7 +163,11 @@ function restoreApplication() {
 
 // Auto-save every 30 seconds
 setInterval(() => {
-  autoSaveApplication();
+  const wizard = document.getElementById("applicationWizard");
+
+  if (!wizard.classList.contains("hidden")) {
+    autoSaveApplication();
+  }
 }, 30000);
 
 window.addEventListener("beforeunload", (event) => {

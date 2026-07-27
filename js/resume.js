@@ -5,6 +5,19 @@ function checkSavedApplication() {
 
   if (!saved) return;
 
+  const hasData = [
+    saved.firstName,
+    saved.lastName,
+    saved.contactNumber,
+    saved.email,
+    saved.birthDate,
+    saved.address,
+  ].some((value) => value && value.toString().trim() !== "");
+
+  if (!hasData) {
+    return;
+  }
+
   const applicantName = saved.firstName || "Applicant";
 
   const hour = new Date().getHours();
@@ -44,6 +57,8 @@ document
 
     resumeModal.classList.add("hidden");
 
+    const wizard = document.getElementById("applicationWizard");
+
     wizard.classList.remove("hidden");
 
     wizard.scrollIntoView({
@@ -55,7 +70,20 @@ document
 document.getElementById("newApplicationBtn").addEventListener("click", () => {
   clearApplication();
 
-  location.reload();
+  resumeModal.classList.add("hidden");
+
+  const wizard = document.getElementById("applicationWizard");
+
+  wizard.classList.remove("hidden");
+
+  currentStep = 1;
+
+  showStep(1);
+
+  wizard.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
 });
 
-document.addEventListener("DOMContentLoaded", checkSavedApplication);
+// document.addEventListener("DOMContentLoaded", checkSavedApplication);

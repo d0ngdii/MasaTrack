@@ -18,10 +18,29 @@ applyBtn.addEventListener("click", openWizard);
 heroApply.addEventListener("click", openWizard);
 
 function openWizard() {
+  const saved = loadApplication();
+
+  if (saved) {
+    const hasData = [
+      saved.firstName,
+      saved.lastName,
+      saved.contactNumber,
+      saved.email,
+      saved.birthDate,
+      saved.address,
+    ].some((value) => value && value.toString().trim() !== "");
+
+    if (hasData) {
+      resumeModal.classList.remove("hidden");
+      return;
+    }
+  }
+
   wizard.classList.remove("hidden");
 
   wizard.scrollIntoView({
     behavior: "smooth",
+    block: "start",
   });
 }
 
