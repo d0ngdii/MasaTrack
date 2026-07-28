@@ -20,7 +20,7 @@ function updateLeader() {
 
   const last = document.getElementById("lastName").value;
 
-  leaderName.textContent = first + " " + last;
+  leaderName.textContent = `${first} ${last}`.trim() || "Group Leader";
 }
 
 document.getElementById("firstName").addEventListener("input", updateLeader);
@@ -30,11 +30,11 @@ document.getElementById("lastName").addEventListener("input", updateLeader);
 function updateCounter() {
   totalHikers.textContent = groupMembers.length + 1;
 
-  if (groupMembers.length + 1 >= 8) {
-    addMemberBtn.disabled = true;
-  } else {
-    addMemberBtn.disabled = false;
-  }
+  const total = groupMembers.length + 1;
+
+  totalHikers.textContent = total;
+
+  addMemberBtn.disabled = total >= 8;
 }
 
 function createMemberCard(index, data = {}) {
@@ -61,36 +61,37 @@ function createMemberCard(index, data = {}) {
 
 function memberHeader(index, data) {
   return `
+    <div class="member-header">
 
-<div class="member-header">
-
-    <div class="member-title">
-
+      <div class="member-title">
         👤
-
         <span class="member-name">
-
-        ${
-          data.firstName
-            ? `${data.firstName} ${data.lastName || ""}`
-            : `Member ${index}`
-        }
-
+          ${
+            data.firstName
+              ? `${data.firstName} ${data.lastName || ""}`
+              : `Member ${index}`
+          }
         </span>
+      </div>
+
+      <div class="member-actions">
+
+        <button
+          type="button"
+          class="remove-member">
+          Remove
+        </button>
+
+        <button
+          type="button"
+          class="member-toggle">
+          ▼
+        </button>
+
+      </div>
 
     </div>
-
-    <button
-        type="button"
-        class="member-toggle">
-
-        ▼
-
-    </button>
-
-</div>
-
-`;
+  `;
 }
 
 function memberPersonal(data = {}) {
@@ -453,75 +454,77 @@ function addMember(member = {}) {
 
   membersContainer.insertAdjacentHTML(
     "beforeend",
-
     createMemberCard(groupMembers.length, member),
   );
 
-  // updateGroupSummary();
+  const newCard = membersContainer.lastElementChild;
 
-  initializeMemberEvents();
+  initializeMemberEvents(newCard);
+
   updateCounter();
 }
 
 function renumberMembers() {
   document.querySelectorAll(".member-card").forEach((card, index) => {
-    card.querySelector("h3").textContent = "Member " + (index + 1);
+    const title = card.querySelector(".member-name");
+
+    if (!title.textContent.trim()) {
+      title.textContent = `Member ${index + 1}`;
+    }
   });
 }
 
-function initializeMemberEvents() {
+function initializeMemberEvents(card) {
+  /* =========================
+     Accordion
+  ========================= */
+
   const header = card.querySelector(".member-header");
 
-  document.querySelectorAll(".member-card").forEach((card) => {
-    /* =========================
-       Accordion
-    ========================= */
+  header.onclick = () => {
+    card.classList.toggle("open");
+  };
 
-    const header = card.querySelector(".member-header");
-
-    header.onclick = () => {
-      card.classList.toggle("open");
-    };
-
-    /* =========================
+  /* =========================
        Member Name
     ========================= */
 
-    const first = card.querySelector(".member-first");
-    const last = card.querySelector(".member-last");
-    const title = card.querySelector(".member-name");
+  const first = card.querySelector(".member-first");
+  const last = card.querySelector(".member-last");
+  const title = card.querySelector(".member-name");
 
-    function updateTitle() {
-      const full = `${first.value} ${last.value}`.trim();
+  function updateTitle() {
+    const full = `${first.value} ${last.value}`.trim();
+    title.textContent = full || "New Member";
+  }
 
-      title.textContent = full || "New Member";
-    }
+  first.oninput = updateTitle;
+  last.oninput = updateTitle;
 
-    first.oninput = updateTitle;
-    last.oninput = updateTitle;
-
-    /* =========================
+  /* =========================
        Auto-compute Age
     ========================= */
 
-    const birthInput = card.querySelector(".member-birthdate");
-    const ageInput = card.querySelector(".member-age");
+  const birthInput = card.querySelector(".member-birthdate");
+  const ageInput = card.querySelector(".member-age");
 
-    birthInput.onchange = () => {
-      ageInput.value = calculateAge(birthInput.value);
-    };
+  birthInput.onchange = () => {
+    ageInput.value = calculateAge(birthInput.value);
+  };
 
-    // Calculate immediately if restoring saved data
-    if (birthInput.value) {
-      ageInput.value = calculateAge(birthInput.value);
-    }
-  });
+  if (birthInput.value) {
+    ageInput.value = calculateAge(birthInput.value);
+  }
 }
+
 function calculateAge(dateString) {
   if (!dateString) return "";
 
-  const today = new Date();
   const birth = new Date(dateString);
+
+  if (isNaN(birth)) return "";
+
+  const today = new Date();
 
   let age = today.getFullYear() - birth.getFullYear();
 
