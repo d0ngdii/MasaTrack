@@ -73,17 +73,30 @@ function validateStep(step) {
 
   const applicantAge = Number(document.getElementById("age").value);
 
-  if (birth && applicantAge < 18) {
-    console.log("Age:", applicantAge);
-    console.log("Age validation triggered");
+  if (birth && birth.value) {
+    const today = new Date();
+    const birthDate = new Date(birth.value);
 
-    alert("Applicants must be at least 18 years old.");
+    let applicantAge = today.getFullYear() - birthDate.getFullYear();
 
-    birth.classList.add("input-error");
+    const monthDiff = today.getMonth() - birthDate.getMonth();
 
-    birth.focus();
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      applicantAge--;
+    }
 
-    return false;
+    if (applicantAge < 18) {
+      birth.classList.add("input-error");
+
+      showToast("Applicants must be at least 18 years old.", "warning");
+
+      birth.focus();
+
+      return false;
+    }
   }
 
   return true;
