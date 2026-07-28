@@ -93,6 +93,30 @@ async function checkSchedule() {
   }
 }
 
+/*************************************************
+ * Validate Schedule
+ *************************************************/
+
+function validateSchedule() {
+  if (!climbDate.value) {
+    showToast("Please select a climb date.", "warning");
+
+    climbDate.focus();
+
+    return false;
+  }
+
+  if (scheduleNextBtn.disabled) {
+    showToast("Selected climb date is unavailable.", "warning");
+
+    climbDate.focus();
+
+    return false;
+  }
+
+  return true;
+}
+
 function hideScheduleLoading() {
   // This function exists for future use if needed.
 }
