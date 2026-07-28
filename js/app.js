@@ -88,37 +88,46 @@ function restoreApplication() {
 
   permanentAddress.value = saved.permanentAddress || "";
 
-  organization.value = saved.organization || "";
-
   /********************************************
    * EMERGENCY CONTACT
    ********************************************/
 
   emergencyName.value = saved.emergencyName || "";
 
-  emergencyRelationship.value = saved.emergencyRelationship || "";
+  relationship.value = saved.relationship || "";
 
   emergencyContact.value = saved.emergencyContact || "";
 
   emergencyAddress.value = saved.emergencyAddress || "";
-
   /********************************************
    * MEDICAL INFORMATION
    ********************************************/
 
-  underMedication.value = saved.underMedication || "";
+  medicalTreatment.value = saved.medicalTreatment || "";
 
-  medicalCondition.value = saved.medicalCondition || "";
+  medicalDetails.value = saved.medicalDetails || "";
+
+  bloodType.value = saved.bloodType || "";
 
   allergies.value = saved.allergies || "";
 
-  bloodType.value = saved.bloodType || "";
+  height.value = saved.height || "";
+
+  weight.value = saved.weight || "";
+
+  bodyType.value = saved.bodyType || "";
+
+  birthMarks.value = saved.birthMarks || "";
+
+  complexion.value = saved.complexion || "";
 
   /********************************************
    * CLIMB SCHEDULE
    ********************************************/
 
   climbDate.value = saved.climbDate || "";
+
+  organization.value = saved.organization || "";
 
   entryPoint.value = saved.entryPoint || "";
 
@@ -165,6 +174,7 @@ function restoreApplication() {
   if (saved.climbDate) {
     checkSchedule();
   }
+  updateLeader();
 }
 
 // Auto-save every 30 seconds

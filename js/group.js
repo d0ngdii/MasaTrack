@@ -23,6 +23,10 @@ function updateLeader() {
   leaderName.textContent = first + " " + last;
 }
 
+document.getElementById("firstName").addEventListener("input", updateLeader);
+
+document.getElementById("lastName").addEventListener("input", updateLeader);
+
 function updateCounter() {
   totalHikers.textContent = groupMembers.length + 1;
 
@@ -66,7 +70,11 @@ function memberHeader(index, data) {
 
         <span class="member-name">
 
-        ${data.firstName || ""} ${data.lastName || "" || `Member ${index}`}
+        ${
+          data.firstName
+            ? `${data.firstName} ${data.lastName || ""}`
+            : `Member ${index}`
+        }
 
         </span>
 
@@ -117,9 +125,15 @@ function memberPersonal(data = {}) {
 
 <select class="member-gender">
 
-<option>Male</option>
+<option
+${data.gender == "Male" ? "selected" : ""}>
+Male
+</option>
 
-<option>Female</option>
+<option
+${data.gender == "Female" ? "selected" : ""}>
+Female
+</option>
 
 </select>
 
@@ -150,13 +164,21 @@ value="${data.age || ""}">
 
 <select class="member-civilStatus">
 
-<option>Single</option>
+<option ${data.civilStatus == "Single" ? "selected" : ""}>
+Single
+</option>
 
-<option>Married</option>
+<option ${data.civilStatus == "Married" ? "selected" : ""}>
+Married
+</option>
 
-<option>Widowed</option>
+<option ${data.civilStatus == "Widowed" ? "selected" : ""}>
+Widowed
+</option>
 
-<option>Divorced</option>
+<option ${data.civilStatus == "Divorced" ? "selected" : ""}>
+Divorced
+</option>
 
 </select>
 
@@ -166,7 +188,9 @@ value="${data.age || ""}">
 
 <label>Nationality</label>
 
-<input class="member-nationality">
+<input
+class="member-nationality"
+value="${data.nationality || ""}">
 
 </div>
 
@@ -174,7 +198,9 @@ value="${data.age || ""}">
 
 <label>Religion</label>
 
-<input class="member-religion">
+<input
+class="member-religion"
+value="${data.religion || ""}">
 
 </div>
 
@@ -182,7 +208,9 @@ value="${data.age || ""}">
 
 <label>Contact Number</label>
 
-<input class="member-contact">
+<input
+class="member-contact"
+value="${data.contactNumber || ""}">
 
 </div>
 
@@ -192,7 +220,8 @@ value="${data.age || ""}">
 
 <input
 type="email"
-class="member-email">
+class="member-email"
+value="${data.email || ""}">
 
 </div>
 
@@ -200,7 +229,9 @@ class="member-email">
 
 <label>Permanent Address</label>
 
-<input class="member-permanentAddress">
+<input
+class="member-permanentAddress"
+value="${data.permanentAddress || ""}">
 
 </div>
 
@@ -429,6 +460,7 @@ function addMember(member = {}) {
   // updateGroupSummary();
 
   initializeMemberEvents();
+  updateCounter();
 }
 
 function renumberMembers() {
@@ -438,6 +470,8 @@ function renumberMembers() {
 }
 
 function initializeMemberEvents() {
+  const header = card.querySelector(".member-header");
+
   document.querySelectorAll(".member-card").forEach((card) => {
     /* =========================
        Accordion
