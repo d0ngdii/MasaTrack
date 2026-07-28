@@ -38,7 +38,18 @@ async function checkSchedule() {
 
   const date = climbDate.value;
 
-  if (!date) return;
+  if (!date) {
+    remainingSlots.textContent = "-";
+
+    availabilityMessage.textContent = "Please select a climb date.";
+
+    availabilityMessage.style.background = "#F5F5F5";
+    availabilityMessage.style.color = "#555";
+
+    scheduleNextBtn.disabled = true;
+
+    return;
+  }
 
   // Show loading immediately
   showScheduleLoading();

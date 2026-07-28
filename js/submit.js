@@ -4,6 +4,7 @@
  *************************************************/
 
 const submitButton = document.getElementById("submitApplicationBtn");
+const agreeTerms = document.getElementById("agreeTerms");
 
 submitButton.addEventListener("click", submitApplication);
 
