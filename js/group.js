@@ -252,7 +252,7 @@ function addMember(member = {}) {
     createMemberCard(groupMembers.length, member),
   );
 
-  updateGroupSummary();
+  // updateGroupSummary();
 
   initializeMemberEvents();
 }
