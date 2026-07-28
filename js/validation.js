@@ -74,9 +74,12 @@ function validateStep(step) {
   const applicantAge = Number(document.getElementById("age").value);
 
   if (birth && applicantAge < 18) {
-    birth.classList.add("input-error");
+    console.log("Age:", applicantAge);
+    console.log("Age validation triggered");
 
-    showToast("Applicants must be at least 18 years old.", "warning");
+    alert("Applicants must be at least 18 years old.");
+
+    birth.classList.add("input-error");
 
     birth.focus();
 
