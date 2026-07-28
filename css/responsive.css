@@ -5,23 +5,32 @@
 
 * {
   box-sizing: border-box;
-}
-
-img {
   max-width: 100%;
-  height: auto;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+html,
 body {
+  width: 100%;
   overflow-x: hidden;
 }
 
-#wizardContainer {
-  width: 95%;
-  max-width: 1200px;
-  margin: auto;
+img,
+canvas,
+iframe,
+table {
+  max-width: 100%;
 }
 
+img {
+  display: block;
+  height: auto;
+}
+
+#wizardContainer,
 .receipt-card {
   width: 95%;
   margin: auto;
@@ -29,412 +38,246 @@ body {
 
 .form-grid {
   display: grid;
-
   grid-template-columns: repeat(2, 1fr);
-
   gap: 20px;
-}
-
-@media (max-width: 768px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  input,
-  select,
-  textarea {
-    width: 100%;
-
-    min-height: 48px;
-
-    font-size: 16px;
-  }
 }
 
 .navigation {
   display: flex;
-
   justify-content: space-between;
-
   gap: 15px;
 }
 
-@media (max-width: 768px) {
-  .navigation {
-    flex-direction: column;
-  }
-
-  .navigation button {
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  #applicationWizard {
-    padding: 20px 10px;
-  }
-
-  .step {
-    padding: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  h1 {
-    font-size: 28px;
-  }
-
-  h2 {
-    font-size: 22px;
-  }
-
-  h3 {
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 768px) {
-  .receipt-row {
-    flex-direction: column;
-
-    gap: 5px;
-  }
-
-  .receipt-buttons {
-    flex-direction: column;
-  }
-
-  .receipt-buttons button {
-    width: 100%;
-  }
-}
-
-table {
-  max-width: 100%;
-}
-
-iframe {
-  max-width: 100%;
-}
-
-canvas {
-  max-width: 100%;
-}
-
 button {
   max-width: 100%;
-}
-
-@media (max-width: 768px) {
-  .stepper {
-    overflow-x: auto;
-
-    display: flex;
-
-    gap: 20px;
-
-    padding-bottom: 10px;
-
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .step-item {
-    min-width: 80px;
-
-    flex-shrink: 0;
-  }
-
-  .step-label {
-    font-size: 12px;
-
-    text-align: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .schedule-grid {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 20px;
-  }
-
-  .schedule-card {
-    width: 100%;
-  }
-}
-/*************************************************
- * MOBILE PROGRESS
- *************************************************/
-
-.mobile-progress {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .mobile-progress {
-    display: block;
-
-    margin-bottom: 25px;
-  }
-
-  .stepper {
-    display: none;
-  }
-
-  .mobile-progress-top {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 10px;
-  }
-
-  #mobileStepNumber {
-    font-weight: bold;
-
-    color: #2e7d32;
-  }
-
-  #mobileStepTitle {
-    font-size: 14px;
-
-    color: #666;
-  }
-
-  .mobile-progress-bar {
-    width: 100%;
-
-    height: 8px;
-
-    background: #e5e5e5;
-
-    border-radius: 50px;
-
-    overflow: hidden;
-  }
-
-  .mobile-progress-fill {
-    height: 100%;
-
-    width: 16.66%;
-
-    background: #2e7d32;
-
-    transition: 0.35s;
-  }
-}
-
-/*************************************************
- * MOBILE NAVIGATION
- *************************************************/
-
-.menu-toggle {
-  display: none;
-
-  background: none;
-
-  border: none;
-
-  font-size: 32px;
-
-  cursor: pointer;
-
-  color: #2e7d32;
-}
-
-@media (max-width: 768px) {
-  header {
-    position: relative;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  nav {
-    display: none;
-
-    position: absolute;
-
-    top: 100%;
-
-    left: 0;
-
-    width: 100%;
-
-    background: #fff;
-
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-
-    padding: 20px;
-  }
-
-  nav.active {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 20px;
-  }
-
-  nav a {
-    width: 100%;
-
-    text-align: left;
-  }
-}
-
-/*************************************************
- * MOBILE SCHEDULE
- *************************************************/
-
-@media (max-width: 768px) {
-  .schedule-container {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 20px;
-  }
-
-  .availability-card {
-    width: 100%;
-
-    padding: 20px;
-
-    border-left: none;
-
-    border-top: 5px solid #2e7d32;
-  }
-
-  #climbDate {
-    width: 100%;
-  }
-}
-
-.member-summary {
-  background: #e8f5e9;
-
-  border-left: 5px solid #2e7d32;
-
-  padding: 15px;
-
-  border-radius: 10px;
-
-  margin-bottom: 20px;
-
-  font-weight: bold;
-}
-
-html,
-body {
-  overflow-x: hidden;
-
-  width: 100%;
-}
-
-* {
-  max-width: 100%;
-}
-
-img {
-  max-width: 100%;
-
-  height: auto;
-
-  display: block;
-}
-
-button {
   min-height: 48px;
-
   padding: 12px 20px;
-}
-
-@media (max-width: 768px) {
-  button {
-    width: 100%;
-
-    margin-bottom: 12px;
-  }
-}
-
-@media (max-width: 768px) {
-  body {
-    font-size: 16px;
-
-    line-height: 1.6;
-  }
-
-  h1 {
-    font-size: 30px;
-  }
-
-  h2 {
-    font-size: 24px;
-  }
-
-  h3 {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .card,
-  .member-card,
-  .receipt-card,
-  .availability-card {
-    margin-bottom: 20px;
-
-    border-radius: 16px;
-  }
 }
 
 .table-responsive {
   overflow-x: auto;
 }
 
-html {
-  scroll-behavior: smooth;
+.member-summary {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-left: 5px solid #2e7d32;
+  border-radius: 10px;
+  background: #e8f5e9;
+  font-weight: bold;
+}
+
+.mobile-progress {
+  display: none;
+}
+
+.menu-toggle {
+  display: none;
+  border: none;
+  background: none;
+  color: #2e7d32;
+  font-size: 32px;
+  cursor: pointer;
 }
 
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
-  outline: 3px solid rgba(46, 125, 50, 0.3);
-
+  outline: 3px solid rgba(46, 125, 50, .3);
   outline-offset: 2px;
 }
 
-@media (max-width: 768px) {
-  .receipt-buttons {
-    display: flex;
+/*************************************************
+ * MOBILE
+ *************************************************/
 
-    flex-direction: column;
+@media (max-width:768px){
 
-    gap: 12px;
-  }
-}
-
-@media (max-width: 768px) {
-  #toastContainer {
-    left: 15px;
-
-    right: 15px;
-
-    top: 15px;
+  body{
+    font-size:16px;
+    line-height:1.6;
   }
 
-  .toast {
-    min-width: auto;
+  h1{
+    font-size:30px;
+  }
 
-    width: 100%;
+  h2{
+    font-size:24px;
+  }
+
+  h3{
+    font-size:20px;
+  }
+
+  #applicationWizard{
+    padding:20px 10px;
+  }
+
+  .step{
+    padding:20px;
+  }
+
+  .form-grid,
+  .member-card .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  input,
+  select,
+  textarea{
+    width:100%;
+    min-height:48px;
+    font-size:16px;
+  }
+
+  .navigation{
+    flex-direction:column;
+  }
+
+  .navigation button,
+  button,
+  .remove-member{
+    width:100%;
+  }
+
+  button{
+    margin-bottom:12px;
+  }
+
+  .receipt-row,
+  .receipt-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .card,
+  .member-card,
+  .receipt-card,
+  .availability-card{
+    margin-bottom:20px;
+    border-radius:16px;
+  }
+
+  /********************************************
+   STEPPER
+  ********************************************/
+
+  .stepper{
+    display:none;
+  }
+
+  .mobile-progress{
+    display:block;
+    margin-bottom:25px;
+  }
+
+  .mobile-progress-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+  }
+
+  #mobileStepNumber{
+    font-weight:600;
+    color:#2e7d32;
+  }
+
+  #mobileStepTitle{
+    font-size:14px;
+    color:#666;
+  }
+
+  .mobile-progress-bar{
+    width:100%;
+    height:8px;
+    overflow:hidden;
+    border-radius:50px;
+    background:#e5e5e5;
+  }
+
+  .mobile-progress-fill{
+    width:16.66%;
+    height:100%;
+    background:#2e7d32;
+    transition:.35s;
+  }
+
+  /********************************************
+   NAVIGATION
+  ********************************************/
+
+  header{
+    position:relative;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  nav{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    padding:20px;
+    background:#fff;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+  }
+
+  nav.active{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+
+  nav a{
+    width:100%;
+    text-align:left;
+  }
+
+  /********************************************
+   SCHEDULE
+  ********************************************/
+
+  .schedule-container,
+  .schedule-grid{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .availability-card,
+  .schedule-card{
+    width:100%;
+  }
+
+  .availability-card{
+    padding:20px;
+    border-left:none;
+    border-top:5px solid #2e7d32;
+  }
+
+  #climbDate{
+    width:100%;
+  }
+
+  /********************************************
+   TOAST
+  ********************************************/
+
+  #toastContainer{
+    top:15px;
+    left:15px;
+    right:15px;
+  }
+
+  .toast{
+    width:100%;
+    min-width:auto;
   }
 }
