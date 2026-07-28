@@ -69,6 +69,8 @@ function validateStep(step) {
     }
   }
 
+  const birth = current.querySelector("#birthDate");
+
   // Validate minimum age (18)
 
   if (birth && birth.value) {
@@ -86,7 +88,9 @@ function validateStep(step) {
       applicantAge--;
     }
 
-    if (applicantAge < 18) {
+    const applicantAge = Number(document.getElementById("age").value);
+
+    if (applicantAge && applicantAge < 18) {
       birth.classList.add("input-error");
 
       showToast("Applicants must be at least 18 years old.", "warning");
