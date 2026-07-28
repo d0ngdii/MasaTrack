@@ -71,7 +71,7 @@ function validateStep(step) {
 
   const birth = current.querySelector("#birthDate");
 
-  if (birth) {
+  if (birth && birth.value) {
     const selected = new Date(birth.value);
 
     if (selected > new Date()) {
@@ -85,12 +85,16 @@ function validateStep(step) {
     }
   }
 
-  if (age.value < 18) {
+  const applicantAge = Number(age.value);
+
+  if (applicantAge && applicantAge < 18) {
     showToast("Applicants must be at least 18 years old.", "warning");
+
+    age.focus();
 
     return false;
   }
-  
+
   return true;
 }
 
@@ -111,3 +115,15 @@ document.addEventListener("change", (e) => {
     e.target.classList.remove("input-error");
   }
 });
+
+/*************************************************
+ * Validation Helpers
+ *************************************************/
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function isValidPhone(number) {
+  return /^09\d{9}$/.test(number);
+}
