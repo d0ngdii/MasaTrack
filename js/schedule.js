@@ -4,32 +4,49 @@
  *************************************************/
 
 const climbDate = document.getElementById("climbDate");
-
 const remainingSlots = document.getElementById("remainingSlots");
-
 const groupSizeDisplay = document.getElementById("groupSizeDisplay");
-
 const availabilityMessage = document.getElementById("availabilityMessage");
-
 const scheduleNextBtn = document.getElementById("scheduleNextBtn");
+
+/*************************************************
+ * Schedule State
+ *************************************************/
+
+let scheduleAvailable = false;
+let checkingSchedule = false;
 
 climbDate.addEventListener("change", checkSchedule);
 
+/*************************************************
+ * Loading UI
+ *************************************************/
+
 function showScheduleLoading() {
+  checkingSchedule = true;
+
   remainingSlots.textContent = "...";
 
   availabilityMessage.innerHTML = `
         <div class="schedule-loading">
-
             <div class="schedule-spinner"></div>
-
             Checking availability...
-
         </div>
     `;
 
+  availabilityMessage.style.background = "#F5F5F5";
+  availabilityMessage.style.color = "#555";
+
   scheduleNextBtn.disabled = true;
 }
+
+function hideScheduleLoading() {
+  checkingSchedule = false;
+}
+
+/*************************************************
+ * Check Schedule Availability
+ *************************************************/
 
 async function checkSchedule() {
   const groupSize = groupMembers.length + 1;
@@ -39,6 +56,8 @@ async function checkSchedule() {
   const date = climbDate.value;
 
   if (!date) {
+    scheduleAvailable = false;
+
     remainingSlots.textContent = "-";
 
     availabilityMessage.textContent = "Please select a climb date.";
@@ -51,7 +70,6 @@ async function checkSchedule() {
     return;
   }
 
-  // Show loading immediately
   showScheduleLoading();
 
   try {
@@ -65,6 +83,8 @@ async function checkSchedule() {
     remainingSlots.textContent = result.available;
 
     if (result.available >= groupSize) {
+      scheduleAvailable = true;
+
       availabilityMessage.textContent = "✔ Schedule Available";
 
       availabilityMessage.style.background = "#E8F5E9";
@@ -72,6 +92,8 @@ async function checkSchedule() {
 
       scheduleNextBtn.disabled = false;
     } else {
+      scheduleAvailable = false;
+
       availabilityMessage.textContent = "✖ Schedule Full";
 
       availabilityMessage.style.background = "#FFEBEE";
@@ -82,19 +104,23 @@ async function checkSchedule() {
   } catch (error) {
     console.error(error);
 
+    scheduleAvailable = false;
+
     remainingSlots.textContent = "-";
 
-    availabilityMessage.textContent = "Unable to check availability.";
+    availabilityMessage.textContent = "Unable to check schedule availability.";
 
     availabilityMessage.style.background = "#FFEBEE";
     availabilityMessage.style.color = "#C62828";
 
     scheduleNextBtn.disabled = true;
+  } finally {
+    hideScheduleLoading();
   }
 }
 
 /*************************************************
- * Validate Schedule
+ * Validation
  *************************************************/
 
 function validateSchedule() {
@@ -106,8 +132,17 @@ function validateSchedule() {
     return false;
   }
 
-  if (scheduleNextBtn.disabled) {
-    showToast("Selected climb date is unavailable.", "warning");
+  if (checkingSchedule) {
+    showToast(
+      "Please wait while schedule availability is being checked.",
+      "info",
+    );
+
+    return false;
+  }
+
+  if (!scheduleAvailable) {
+    showToast("No available slots for the selected climb date.", "warning");
 
     climbDate.focus();
 
@@ -115,8 +150,4 @@ function validateSchedule() {
   }
 
   return true;
-}
-
-function hideScheduleLoading() {
-  // This function exists for future use if needed.
 }
