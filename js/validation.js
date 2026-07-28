@@ -4,40 +4,28 @@
  *************************************************/
 
 function validateStep(step) {
-  switch (step) {
-    case 1:
-      return validatePersonal();
+  const currentStepElement = document.getElementById(`step${step}`);
 
-    case 2:
-      return validateEmergency();
+  const requiredFields = currentStepElement.querySelectorAll(
+    "input[required], select[required], textarea[required]",
+  );
 
-    case 3:
-      return validateMedical();
+  for (const field of requiredFields) {
+    if (!field.value.trim()) {
+      const label =
+        field.closest(".form-group")?.querySelector("label")?.textContent ||
+        "This field";
 
-    case 4:
-      return validateGroup();
+      showToast(`${label} is required.`, "warning");
 
-    case 5:
-      return validateSchedule();
+      field.focus();
 
-    default:
-      return true;
-  }
-}
-
-function validateSchedule() {
-  if (!climbDate.value) {
-    showToast("Please select a climb date.", "warning");
-
-    climbDate.focus();
-
-    return false;
+      return false;
+    }
   }
 
-  if (scheduleNextBtn.disabled) {
-    showToast("Please wait until the schedule is checked.", "warning");
-
-    return false;
+  if (step === 5) {
+    return validateSchedule();
   }
 
   return true;

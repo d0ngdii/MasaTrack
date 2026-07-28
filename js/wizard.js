@@ -58,9 +58,7 @@ function showStep(step) {
 function nextStep() {
   if (currentStep >= totalSteps) return;
 
-  if (!validateStep(currentStep)) {
-    return;
-  }
+  if (!validateStep(currentStep)) return;
 
   currentStep++;
 
