@@ -209,34 +209,206 @@ class="member-email">
 `;
 }
 
-function memberPhysical() {
+function memberPhysical(data = {}) {
   return `
 
-<h3>Physical Description</h3>
+    <h3>Physical Description</h3>
 
-<p>Coming next...</p>
+    <div class="form-grid">
 
-`;
+        <div class="form-group">
+            <label>Height (cm)</label>
+            <input
+                type="number"
+                class="member-height"
+                value="${data.height || ""}">
+        </div>
+
+        <div class="form-group">
+            <label>Weight (kg)</label>
+            <input
+                type="number"
+                class="member-weight"
+                value="${data.weight || ""}">
+        </div>
+
+        <div class="form-group">
+            <label>Blood Type</label>
+
+            <select class="member-bloodType">
+
+                <option value="">Select Blood Type</option>
+
+                <option ${data.bloodType === "A+" ? "selected" : ""}>A+</option>
+                <option ${data.bloodType === "A-" ? "selected" : ""}>A-</option>
+                <option ${data.bloodType === "B+" ? "selected" : ""}>B+</option>
+                <option ${data.bloodType === "B-" ? "selected" : ""}>B-</option>
+                <option ${data.bloodType === "AB+" ? "selected" : ""}>AB+</option>
+                <option ${data.bloodType === "AB-" ? "selected" : ""}>AB-</option>
+                <option ${data.bloodType === "O+" ? "selected" : ""}>O+</option>
+                <option ${data.bloodType === "O-" ? "selected" : ""}>O-</option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Body Type</label>
+
+            <select class="member-bodyType">
+
+                <option value="">Select</option>
+
+                <option ${data.bodyType === "Slim" ? "selected" : ""}>Slim</option>
+                <option ${data.bodyType === "Average" ? "selected" : ""}>Average</option>
+                <option ${data.bodyType === "Athletic" ? "selected" : ""}>Athletic</option>
+                <option ${data.bodyType === "Heavy" ? "selected" : ""}>Heavy</option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Distinguishing Marks</label>
+            <input
+                class="member-birthMarks"
+                value="${data.birthMarks || ""}">
+        </div>
+
+        <div class="form-group">
+            <label>Complexion</label>
+
+            <select class="member-complexion">
+
+                <option value="">Select</option>
+
+                <option ${data.complexion === "Fair" ? "selected" : ""}>Fair</option>
+                <option ${data.complexion === "Light" ? "selected" : ""}>Light</option>
+                <option ${data.complexion === "Medium" ? "selected" : ""}>Medium</option>
+                <option ${data.complexion === "Morena" ? "selected" : ""}>Morena</option>
+                <option ${data.complexion === "Dark" ? "selected" : ""}>Dark</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+  `;
 }
 
-function memberEmergency() {
+function memberEmergency(data = {}) {
   return `
 
-<h3>Emergency Contact</h3>
+    <h3>Emergency Contact</h3>
 
-<p>Coming next...</p>
+    <div class="form-grid">
 
-`;
+        <div class="form-group">
+            <label>Contact Name</label>
+            <input
+                class="member-emergencyName"
+                value="${data.emergencyName || ""}">
+        </div>
+
+        <div class="form-group">
+            <label>Relationship</label>
+            <input
+                class="member-relationship"
+                value="${data.relationship || ""}">
+        </div>
+
+        <div class="form-group">
+            <label>Contact Number</label>
+            <input
+                class="member-emergencyContact"
+                value="${data.emergencyContact || ""}">
+        </div>
+
+        <div class="form-group full-width">
+            <label>Emergency Address</label>
+            <input
+                class="member-emergencyAddress"
+                value="${data.emergencyAddress || ""}">
+        </div>
+
+    </div>
+
+  `;
 }
 
-function memberClimbing() {
+function memberClimbing(data = {}) {
   return `
 
-<h3>Climbing Information</h3>
+    <h3>Climbing Information</h3>
 
-<p>Coming next...</p>
+    <div class="form-grid">
 
-`;
+        <div class="form-group">
+            <label>Mountain Climbing Experience</label>
+
+            <select class="member-experience">
+
+                <option value="">Select</option>
+
+                <option ${data.experience == "Beginner" ? "selected" : ""}>
+                    Beginner
+                </option>
+
+                <option ${data.experience == "Intermediate" ? "selected" : ""}>
+                    Intermediate
+                </option>
+
+                <option ${data.experience == "Advanced" ? "selected" : ""}>
+                    Advanced
+                </option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Latest Mountain Climbed</label>
+
+            <input
+                class="member-latestMountain"
+                value="${data.latestMountain || ""}">
+        </div>
+
+        <div class="form-group">
+            <label>Currently Under Medical Treatment?</label>
+
+            <select class="member-medicalTreatment">
+
+                <option value="">Select</option>
+
+                <option ${data.medicalTreatment == "No" ? "selected" : ""}>
+                    No
+                </option>
+
+                <option ${data.medicalTreatment == "Yes" ? "selected" : ""}>
+                    Yes
+                </option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Medical Condition / Details</label>
+
+            <input
+                class="member-medicalDetails"
+                value="${data.medicalDetails || ""}">
+        </div>
+
+        <div class="form-group full-width">
+            <label>Allergies</label>
+
+            <input
+                class="member-allergies"
+                value="${data.allergies || ""}">
+        </div>
+
+    </div>
+
+  `;
 }
 
 function addMember(member = {}) {
