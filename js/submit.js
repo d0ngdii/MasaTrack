@@ -15,6 +15,12 @@ async function submitApplication() {
 
   const application = collectApplicationData();
 
+  // ===========================
+  // DEBUG
+  // ===========================
+  console.log("APPLICATION:", application);
+  console.log("GROUP MEMBERS:", application.groupMembers);
+
   try {
     showLoading(
       "Submitting Application",
