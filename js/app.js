@@ -124,6 +124,12 @@ function restoreApplication() {
 
   exitPoint.value = saved.exitPoint || "";
 
+  climbingExperience.value = saved.climbingExperience || "";
+
+  experienceLevel.value = saved.experienceLevel || "";
+
+  latestMountain.value = saved.latestMountain || "";
+
   /********************************************
    * TERMS
    ********************************************/

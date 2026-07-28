@@ -187,28 +187,52 @@ function generateReview() {
   }
 
   html += "</div>";
-
   /* =========================
-       CLIMB SCHEDULE
-    ========================= */
+   CLIMB SCHEDULE
+========================= */
 
   html += `
-    <div class="review-section">
+<div class="review-section">
 
-        <h3>Climb Schedule</h3>
+    <h3>Climb Schedule</h3>
 
-        <div class="review-item">
-            <span class="review-label">Climb Date</span>
-            <span>${application.climbDate}</span>
-        </div>
-
-        <div class="review-item">
-            <span class="review-label">Total Hikers</span>
-            <span>${application.totalHikers}</span>
-        </div>
-
+    <div class="review-item">
+        <span class="review-label">Climb Date</span>
+        <span>${application.climbDate || "-"}</span>
     </div>
-    `;
+
+    <div class="review-item">
+        <span class="review-label">Entry Point</span>
+        <span>${application.entryPoint || "-"}</span>
+    </div>
+
+    <div class="review-item">
+        <span class="review-label">Exit Point</span>
+        <span>${application.exitPoint || "-"}</span>
+    </div>
+
+    <div class="review-item">
+        <span class="review-label">Mountain Climbing Experience</span>
+        <span>${application.climbingExperience || "-"}</span>
+    </div>
+
+    <div class="review-item">
+        <span class="review-label">Experience Level</span>
+        <span>${application.experienceLevel || "-"}</span>
+    </div>
+
+    <div class="review-item">
+        <span class="review-label">Latest Mountain Climbed</span>
+        <span>${application.latestMountain || "-"}</span>
+    </div>
+
+    <div class="review-item">
+        <span class="review-label">Total Hikers</span>
+        <span>${application.totalHikers}</span>
+    </div>
+
+</div>
+`;
 
   reviewContainer.innerHTML = html;
 }

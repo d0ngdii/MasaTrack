@@ -751,3 +751,67 @@
 .hidden {
   display: none !important;
 }
+
+.member-card{
+
+    background:white;
+
+    border-radius:16px;
+
+    margin-bottom:20px;
+
+    overflow:hidden;
+
+    border:1px solid #ddd;
+
+}
+
+.member-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    padding:18px;
+
+    background:#f7f7f7;
+
+}
+
+.member-content{
+
+    display:none;
+
+    padding:20px;
+
+}
+
+.member-card.open .member-content{
+
+    display:block;
+
+}
+
+.member-title{
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.member-toggle{
+
+    border:none;
+
+    background:none;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}

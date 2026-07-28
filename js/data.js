@@ -98,5 +98,15 @@ function collectApplicationData() {
     // ======================
 
     climbDate: climbDate.value,
+    
+    entryPoint: entryPoint.value,
+
+    exitPoint: exitPoint.value,
+
+    climbingExperience: climbingExperience.value,
+
+    experienceLevel: experienceLevel.value,
+
+    latestMountain: latestMountain.value.trim(),
   };
 }
