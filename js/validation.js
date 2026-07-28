@@ -4,19 +4,32 @@
  *************************************************/
 
 function validateStep(step) {
-  const currentStepElement = document.getElementById(`step${step}`);
+  const current = document.getElementById(`step${step}`);
 
-  const requiredFields = currentStepElement.querySelectorAll(
+  const requiredFields = current.querySelectorAll(
     "input[required], select[required], textarea[required]",
   );
 
+  clearValidation();
+
   for (const field of requiredFields) {
-    if (!field.value.trim()) {
+    const value =
+      field.type === "checkbox" ? field.checked : field.value.trim();
+
+    if (!value) {
+      field.classList.add("input-error");
+
       const label =
         field.closest(".form-group")?.querySelector("label")?.textContent ||
         "This field";
 
       showToast(`${label} is required.`, "warning");
+
+      field.scrollIntoView({
+        behavior: "smooth",
+
+        block: "center",
+      });
 
       field.focus();
 
@@ -28,5 +41,73 @@ function validateStep(step) {
     return validateSchedule();
   }
 
+  const emailField = current.querySelector("#email");
+
+  if (emailField && emailField.value) {
+    if (!isValidEmail(emailField.value)) {
+      emailField.classList.add("input-error");
+
+      showToast("Please enter a valid email address.", "warning");
+
+      emailField.focus();
+
+      return false;
+    }
+  }
+
+  const phone = current.querySelector("#contactNumber");
+
+  if (phone && phone.value) {
+    if (!isValidPhone(phone.value)) {
+      phone.classList.add("input-error");
+
+      showToast("Please enter a valid mobile number.", "warning");
+
+      phone.focus();
+
+      return false;
+    }
+  }
+
+  const birth = current.querySelector("#birthDate");
+
+  if (birth) {
+    const selected = new Date(birth.value);
+
+    if (selected > new Date()) {
+      birth.classList.add("input-error");
+
+      showToast("Birth date cannot be in the future.", "warning");
+
+      birth.focus();
+
+      return false;
+    }
+  }
+
+  if (age.value < 18) {
+    showToast("Applicants must be at least 18 years old.", "warning");
+
+    return false;
+  }
+  
   return true;
 }
+
+function clearValidation() {
+  document.querySelectorAll(".input-error").forEach((field) => {
+    field.classList.remove("input-error");
+  });
+}
+
+document.addEventListener("input", (e) => {
+  if (e.target.classList.contains("input-error")) {
+    e.target.classList.remove("input-error");
+  }
+});
+
+document.addEventListener("change", (e) => {
+  if (e.target.classList.contains("input-error")) {
+    e.target.classList.remove("input-error");
+  }
+});

@@ -56,6 +56,14 @@ function showStep(step) {
 }
 
 function nextStep() {
+  const btn = document.activeElement;
+
+  btn.disabled = true;
+
+  setTimeout(() => {
+    btn.disabled = false;
+  }, 500);
+  
   if (currentStep >= totalSteps) return;
 
   if (!validateStep(currentStep)) return;

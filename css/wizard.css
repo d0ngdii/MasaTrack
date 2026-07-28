@@ -815,3 +815,27 @@
     cursor:pointer;
 
 }
+
+.input-error{
+
+    border:2px solid #e53935 !important;
+
+    box-shadow:0 0 0 4px rgba(229,57,53,.15);
+
+    animation:shake .25s;
+
+}
+
+@keyframes shake{
+
+0%{transform:translateX(0);}
+
+25%{transform:translateX(-3px);}
+
+50%{transform:translateX(3px);}
+
+75%{transform:translateX(-3px);}
+
+100%{transform:translateX(0);}
+
+}
