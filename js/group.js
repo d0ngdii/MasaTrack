@@ -130,7 +130,8 @@ function memberPersonal(data = {}) {
 
 <input
 type="date"
-class="member-birthdate">
+class="member-birthdate"
+value="${data.birthDate || ""}">
 
 </div>
 
@@ -139,7 +140,8 @@ class="member-birthdate">
 
 <input
 readonly
-class="member-age">
+class="member-age"
+value="${data.age || ""}">
 
 </div>
 
@@ -264,19 +266,23 @@ function renumberMembers() {
 }
 
 function initializeMemberEvents() {
-  document.querySelectorAll(".member-header").forEach((header) => {
-    header.onclick = () => {
-      const card = header.closest(".member-card");
+  document.querySelectorAll(".member-card").forEach((card) => {
+    /* =========================
+       Accordion
+    ========================= */
 
+    const header = card.querySelector(".member-header");
+
+    header.onclick = () => {
       card.classList.toggle("open");
     };
-  });
 
-  document.querySelectorAll(".member-card").forEach((card) => {
+    /* =========================
+       Member Name
+    ========================= */
+
     const first = card.querySelector(".member-first");
-
     const last = card.querySelector(".member-last");
-
     const title = card.querySelector(".member-name");
 
     function updateTitle() {
@@ -285,39 +291,39 @@ function initializeMemberEvents() {
       title.textContent = full || "New Member";
     }
 
-    first.addEventListener("input", updateTitle);
+    first.oninput = updateTitle;
+    last.oninput = updateTitle;
 
-    last.addEventListener("input", updateTitle);
-  });
-}
-
-function calculateAge(dateString) {
-    if (!dateString) return "";
-
-    const today = new Date();
-    const birth = new Date(dateString);
-
-    let age = today.getFullYear() - birth.getFullYear();
-
-    const monthDiff = today.getMonth() - birth.getMonth();
-
-    if (
-        monthDiff < 0 ||
-        (monthDiff === 0 && today.getDate() < birth.getDate())
-    ) {
-        age--;
-    }
-
-    return age;
-}
-
-document.querySelectorAll(".member-card").forEach(card => {
+    /* =========================
+       Auto-compute Age
+    ========================= */
 
     const birthInput = card.querySelector(".member-birthdate");
     const ageInput = card.querySelector(".member-age");
 
-    birthInput.addEventListener("change", () => {
-        ageInput.value = calculateAge(birthInput.value);
-    });
+    birthInput.onchange = () => {
+      ageInput.value = calculateAge(birthInput.value);
+    };
 
-});
+    // Calculate immediately if restoring saved data
+    if (birthInput.value) {
+      ageInput.value = calculateAge(birthInput.value);
+    }
+  });
+}
+function calculateAge(dateString) {
+  if (!dateString) return "";
+
+  const today = new Date();
+  const birth = new Date(dateString);
+
+  let age = today.getFullYear() - birth.getFullYear();
+
+  const monthDiff = today.getMonth() - birth.getMonth();
+
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+    age--;
+  }
+
+  return age;
+}
