@@ -152,7 +152,7 @@ function restoreApplication() {
   if (saved.groupMembers && saved.groupMembers.length > 0) {
     groupMembers = [];
 
-    groupList.innerHTML = "";
+    membersContainer.innerHTML = "";
 
     saved.groupMembers.forEach((member) => {
       addMember(member);

@@ -466,9 +466,15 @@ function addMember(member = {}) {
 
 function renumberMembers() {
   document.querySelectorAll(".member-card").forEach((card, index) => {
-    const title = card.querySelector(".member-name");
+    card.dataset.member = index + 1;
 
-    if (!title.textContent.trim()) {
+    const title = card.querySelector(".member-name");
+    const first = card.querySelector(".member-first").value.trim();
+    const last = card.querySelector(".member-last").value.trim();
+
+    if (first || last) {
+      title.textContent = `${first} ${last}`.trim();
+    } else {
       title.textContent = `Member ${index + 1}`;
     }
   });
@@ -486,8 +492,29 @@ function initializeMemberEvents(card) {
   };
 
   /* =========================
-       Member Name
-    ========================= */
+     Remove Member
+  ========================= */
+
+  const removeBtn = card.querySelector(".remove-member");
+
+  if (removeBtn) {
+    removeBtn.onclick = () => {
+      const index = [...membersContainer.children].indexOf(card);
+
+      if (index > -1) {
+        groupMembers.splice(index, 1);
+      }
+
+      card.remove();
+
+      updateCounter();
+      renumberMembers();
+    };
+  }
+
+  /* =========================
+     Member Name
+  ========================= */
 
   const first = card.querySelector(".member-first");
   const last = card.querySelector(".member-last");
@@ -502,8 +529,8 @@ function initializeMemberEvents(card) {
   last.oninput = updateTitle;
 
   /* =========================
-       Auto-compute Age
-    ========================= */
+     Auto-compute Age
+  ========================= */
 
   const birthInput = card.querySelector(".member-birthdate");
   const ageInput = card.querySelector(".member-age");
