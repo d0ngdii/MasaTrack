@@ -32,7 +32,7 @@ function autoSaveApplication() {
     application.contactNumber,
     application.email,
     application.birthDate,
-    application.address,
+    application.permanentAddress,
   ].some((value) => value && value.toString().trim() !== "");
 
   if (!hasData) {
@@ -86,7 +86,7 @@ function restoreApplication() {
   contactNumber.value = saved.contactNumber || "";
   email.value = saved.email || "";
 
-  address.value = saved.address || "";
+  permanentAddress.value = saved.permanentAddress || "";
 
   organization.value = saved.organization || "";
 

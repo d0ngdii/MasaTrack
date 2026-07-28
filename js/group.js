@@ -200,7 +200,7 @@ class="member-email">
 
 <label>Permanent Address</label>
 
-<input class="member-address">
+<input class="member-permanentAddress">
 
 </div>
 

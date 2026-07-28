@@ -27,7 +27,7 @@ function openWizard() {
       saved.contactNumber,
       saved.email,
       saved.birthDate,
-      saved.address,
+      saved.permanentAddress,
     ].some((value) => value && value.toString().trim() !== "");
 
     if (hasData) {

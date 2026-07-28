@@ -69,6 +69,11 @@ function generateReview() {
             <span>${application.email}</span>
         </div>
 
+        <div class="review-item">
+            <span class="review-label">Permanent Address</span>
+            <span>${application.permanentAddress}</span>
+        </div>
+
     </div>
     `;
 

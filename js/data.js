@@ -36,7 +36,7 @@ function collectApplicationData() {
 
       email: card.querySelector(".member-email").value.trim(),
 
-      address: card.querySelector(".member-address").value.trim(),
+      permanentAddress: card.querySelector(".member-permanentAddress").value.trim(),
 
       /* ==========================
            PHYSICAL INFORMATION
