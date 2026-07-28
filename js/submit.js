@@ -4,13 +4,17 @@
  *************************************************/
 
 const submitButton = document.getElementById("submitApplicationBtn");
-const agreeTerms = document.getElementById("agreeTerms");
 
 submitButton.addEventListener("click", submitApplication);
 
 async function submitApplication() {
+  const agreeTerms = document.getElementById("agreeTerms");
+
   if (!agreeTerms.checked) {
     showToast("Please accept the Terms and Conditions.", "warning");
+
+    agreeTerms.focus();
+
     return;
   }
 
