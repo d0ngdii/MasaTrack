@@ -69,30 +69,32 @@ function validateStep(step) {
     }
   }
 
-  const birth = current.querySelector("#birthDate");
+  // Validate minimum age (18)
 
   if (birth && birth.value) {
-    const selected = new Date(birth.value);
+    const today = new Date();
+    const birthDate = new Date(birth.value);
 
-    if (selected > new Date()) {
+    let applicantAge = today.getFullYear() - birthDate.getFullYear();
+
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+
+    if (
+      monthDifference < 0 ||
+      (monthDifference === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      applicantAge--;
+    }
+
+    if (applicantAge < 18) {
       birth.classList.add("input-error");
 
-      showToast("Birth date cannot be in the future.", "warning");
+      showToast("Applicants must be at least 18 years old.", "warning");
 
       birth.focus();
 
       return false;
     }
-  }
-
-  const applicantAge = Number(age.value);
-
-  if (applicantAge && applicantAge < 18) {
-    showToast("Applicants must be at least 18 years old.", "warning");
-
-    age.focus();
-
-    return false;
   }
 
   return true;
