@@ -71,34 +71,16 @@ function validateStep(step) {
 
   const birth = current.querySelector("#birthDate");
 
-  // Validate minimum age (18)
+  const applicantAge = Number(document.getElementById("age").value);
 
-  if (birth && birth.value) {
-    const today = new Date();
-    const birthDate = new Date(birth.value);
+  if (birth && applicantAge < 18) {
+    birth.classList.add("input-error");
 
-    let applicantAge = today.getFullYear() - birthDate.getFullYear();
+    showToast("Applicants must be at least 18 years old.", "warning");
 
-    const monthDifference = today.getMonth() - birthDate.getMonth();
+    birth.focus();
 
-    if (
-      monthDifference < 0 ||
-      (monthDifference === 0 && today.getDate() < birthDate.getDate())
-    ) {
-      applicantAge--;
-    }
-
-    const applicantAge = Number(document.getElementById("age").value);
-
-    if (applicantAge && applicantAge < 18) {
-      birth.classList.add("input-error");
-
-      showToast("Applicants must be at least 18 years old.", "warning");
-
-      birth.focus();
-
-      return false;
-    }
+    return false;
   }
 
   return true;
