@@ -73,12 +73,12 @@ async function checkSchedule() {
   showScheduleLoading();
 
   try {
-    console.log("Checking date:", date);
-    console.log("Group Size:", groupSize);
+    debug("Checking date:", date);
+    debug("Group Size:", groupSize);
 
     const result = await window.checkAvailability(date, groupSize);
 
-    console.log("API Response:", result);
+    debug("API Response:", result);
 
     remainingSlots.textContent = result.available;
 

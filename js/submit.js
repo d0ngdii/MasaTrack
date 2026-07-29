@@ -23,11 +23,11 @@ async function submitApplication() {
   // ===========================
   // DEBUG
   // ===========================
-  console.log("APPLICATION:", application);
-  console.log("GROUP MEMBERS:", application.groupMembers);
-  console.log(application);
-  console.log(application.permanentAddress);
-  console.log(JSON.stringify(application, null, 2));
+  debug("APPLICATION:", application);
+  debug("GROUP MEMBERS:", application.groupMembers);
+  debug(application);
+  debug(application.permanentAddress);
+  debug(JSON.stringify(application, null, 2));
 
   try {
     showLoading(
@@ -55,8 +55,8 @@ async function submitApplication() {
 
     const rawText = await response.text();
 
-    console.log("RAW RESPONSE:");
-    console.log(rawText);
+    debug("RAW RESPONSE:");
+    debug(rawText);
 
     let result;
 
@@ -68,7 +68,7 @@ async function submitApplication() {
       throw err;
     }
 
-    console.log(result);
+    debug(result);
 
     if (result.success) {
       showToast("Application submitted successfully!", "success");

@@ -1,3 +1,9 @@
+const DEBUG = false; //For Debugging purposes, set to true to enable debug logs
+
+function debug(...args) {
+  if (DEBUG) console.log(...args);
+}
+
 const birthDate = document.getElementById("birthDate");
 
 const age = document.getElementById("age");
