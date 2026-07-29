@@ -1,5 +1,5 @@
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbxAko5142kaEqjaea44XASbPlsSqxWtQwqlXoiErXUcQNJZAnai6KRC_1gZM0iiXBwq/exec";
+  "https://script.google.com/macros/s/AKfycbzG-DX_UT-9gouLoHJuEQR-M8dw2zZFEJ0uVtE7JJh5VVgvOqOKPePePUsmGMxmrYBr/exec";
 
 async function checkAvailability(date, hikers) {
   const response = await fetch(
