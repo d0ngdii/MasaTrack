@@ -55,17 +55,17 @@ async function submitApplication() {
 
     const rawText = await response.text();
 
-    console.log("========== RAW RESPONSE ==========");
+    console.log("RAW RESPONSE:");
     console.log(rawText);
-    console.log("=================================");
 
     let result;
 
     try {
       result = JSON.parse(rawText);
     } catch (err) {
+      console.error("Invalid JSON returned by Apps Script");
       console.error(rawText);
-      throw new Error("Server returned an invalid response.");
+      throw err;
     }
 
     console.log(result);
