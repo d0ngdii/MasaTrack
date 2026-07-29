@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
   try {
     const appsScriptUrl =
-      "https://script.google.com/macros/s/AKfycbxAko5142kaEqjaea44XASbPlsSqxWtQwqlXoiErXUcQNJZAnai6KRC_1gZM0iiXBwq/exec";
+      "https://script.google.com/macros/s/AKfycbzG-DX_UT-9gouLoHJuEQR-M8dw2zZFEJ0uVtE7JJh5VVgvOqOKPePePUsmGMxmrYBr/exec";
 
     const upstream = await fetch(appsScriptUrl, {
       method: "POST",
@@ -20,12 +20,11 @@ export default async function handler(req, res) {
 
     const text = await upstream.text();
 
-    res.setHeader("Content-Type", "application/json");
-    return res.status(200).send(text);
-  } catch (error) {
+    return res.status(upstream.status).send(text);
+  } catch (err) {
     return res.status(500).json({
       success: false,
-      message: error.toString(),
+      message: err.toString(),
     });
   }
 }
