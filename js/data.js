@@ -169,6 +169,8 @@ function collectApplicationData() {
 
     climbDate: climbDate.value,
 
+    organization: organization.value.trim(),
+
     entryPoint: entryPoint.value,
 
     exitPoint: exitPoint.value,
