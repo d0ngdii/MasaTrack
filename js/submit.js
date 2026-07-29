@@ -55,13 +55,16 @@ async function submitApplication() {
 
     const rawText = await response.text();
 
-    console.log("RAW RESPONSE:", rawText);
+    console.log("========== RAW RESPONSE ==========");
+    console.log(rawText);
+    console.log("=================================");
 
     let result;
 
     try {
       result = JSON.parse(rawText);
-    } catch {
+    } catch (err) {
+      console.error(rawText);
       throw new Error("Server returned an invalid response.");
     }
 
