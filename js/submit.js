@@ -25,6 +25,9 @@ async function submitApplication() {
   // ===========================
   console.log("APPLICATION:", application);
   console.log("GROUP MEMBERS:", application.groupMembers);
+  console.log(application);
+  console.log(application.permanentAddress);
+  console.log(JSON.stringify(application, null, 2));
 
   try {
     showLoading(
