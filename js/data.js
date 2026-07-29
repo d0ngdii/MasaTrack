@@ -36,7 +36,9 @@ function collectApplicationData() {
 
       email: card.querySelector(".member-email").value.trim(),
 
-      permanentAddress: card.querySelector(".member-permanentAddress").value.trim(),
+      permanentAddress: card
+        .querySelector(".member-permanentAddress")
+        .value.trim(),
 
       /* ==========================
            PHYSICAL INFORMATION
@@ -116,6 +118,8 @@ function collectApplicationData() {
     contactNumber: contactNumber.value.trim(),
 
     email: email.value.trim(),
+
+    permanentAddress: permanentAddress.value.trim(),
 
     // ======================
     // EMERGENCY
