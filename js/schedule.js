@@ -49,7 +49,7 @@ function hideScheduleLoading() {
  *************************************************/
 
 async function checkSchedule() {
-  const groupSize = groupMembers.length + 1;
+  const groupSize = 1;
 
   groupSizeDisplay.textContent = groupSize;
 

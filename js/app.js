@@ -152,20 +152,6 @@ function restoreApplication() {
   agreeTerms.checked = saved.agreeTerms || false;
 
   /********************************************
-   * GROUP MEMBERS
-   ********************************************/
-
-  if (saved.groupMembers && saved.groupMembers.length > 0) {
-    groupMembers = [];
-
-    membersContainer.innerHTML = "";
-
-    saved.groupMembers.forEach((member) => {
-      addMember(member);
-    });
-  }
-
-  /********************************************
    * CURRENT STEP
    ********************************************/
 
