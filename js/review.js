@@ -176,6 +176,11 @@ function generateReview() {
     </div>
 
     <div class="review-item">
+        <span class="review-label">Organization / Hiking Club</span>
+        <span>${application.organization || "-"}</span>
+    </div>
+
+    <div class="review-item">
         <span class="review-label">Entry Point</span>
         <span>${application.entryPoint || "-"}</span>
     </div>
@@ -198,11 +203,6 @@ function generateReview() {
     <div class="review-item">
         <span class="review-label">Latest Mountain Climbed</span>
         <span>${application.latestMountain || "-"}</span>
-    </div>
-
-    <div class="review-item">
-        <span class="review-label">Total Hikers</span>
-        <span>${application.totalHikers}</span>
     </div>
 
 </div>
