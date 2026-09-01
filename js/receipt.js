@@ -22,8 +22,8 @@ function showReceipt(receiptNumber, application) {
 
   document.getElementById("receiptDate").textContent = application.climbDate;
 
-  document.getElementById("receiptHikers").textContent =
-    application.groupMembers.length + 1;
+  // document.getElementById("receiptHikers").textContent =
+  //   application.groupMembers.length + 1;
 
   generateReceiptQR(receiptNumber);
 }

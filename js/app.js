@@ -24,10 +24,6 @@ birthDate.addEventListener("change", () => {
   age.value = years;
 });
 
-document.getElementById("firstName").addEventListener("input", updateLeader);
-
-document.getElementById("lastName").addEventListener("input", updateLeader);
-
 function autoSaveApplication() {
   const application = collectApplicationData();
 
@@ -166,7 +162,6 @@ function restoreApplication() {
   if (saved.climbDate) {
     checkSchedule();
   }
-  updateLeader();
 }
 
 // Auto-save every 30 seconds

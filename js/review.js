@@ -162,37 +162,6 @@ function generateReview() {
     `;
 
   /* =========================
-       GROUP MEMBERS
-    ========================= */
-
-  html += `
-    <div class="review-section">
-
-        <h3>Group Members</h3>
-    `;
-
-  if (application.groupMembers.length === 0) {
-    html += "<p>No additional group members.</p>";
-  } else {
-    application.groupMembers.forEach((member, index) => {
-      html += `
-                <div class="review-item">
-                    <span class="review-label">
-                        Member ${index + 1}
-                    </span>
-
-                    <span>
-                        ${member.firstName}
-                        ${member.middleName}
-                        ${member.lastName}
-                    </span>
-                </div>
-            `;
-    });
-  }
-
-  html += "</div>";
-  /* =========================
    CLIMB SCHEDULE
 ========================= */
 
