@@ -176,7 +176,7 @@ function generateReview() {
     </div>
 
     <div class="review-item">
-        <span class="review-label">Organization / Hiking Club</span>
+        <span class="review-label">Organization</span>
         <span>${application.organization || "-"}</span>
     </div>
 

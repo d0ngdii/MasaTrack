@@ -74,7 +74,7 @@ function nextStep() {
 
   showStep(currentStep);
 
-  if (currentStep === 6) {
+  if (currentStep === 5) {
     generateReview();
   }
 
