@@ -4,7 +4,7 @@
  *************************************************/
 
 function collectApplicationData() {
-  
+
   return {
     action: "submit",
 
@@ -71,14 +71,6 @@ function collectApplicationData() {
     birthMarks: birthMarks.value.trim(),
 
     complexion: complexion.value,
-
-    // ======================
-    // GROUP
-    // ======================
-
-    groupMembers: members,
-
-    totalHikers: members.length + 1,
 
     // ======================
     // SCHEDULE
