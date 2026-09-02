@@ -373,6 +373,68 @@
   transform: translateX(0);
 }
 
+/* ==========================================
+   PAYMENT
+========================================== */
+
+.payment-container {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.payment-summary,
+.payment-qr-section,
+.payment-upload {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.payment-summary {
+  text-align: center;
+}
+
+.payment-amount {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 15px 0;
+}
+
+.payment-qr-section {
+  text-align: center;
+}
+
+.payment-qr {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.payment-qr img {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+}
+
+.payment-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.payment-upload label {
+  font-weight: 600;
+}
+
+.payment-upload input[type="file"] {
+  padding: 10px;
+}
+
+.payment-upload small {
+  font-size: 13px;
+}
+
 /*************************************************
  * TOAST
  *************************************************/

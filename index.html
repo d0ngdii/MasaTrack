@@ -205,6 +205,12 @@
 
             <div class="step-label">Review</div>
           </div>
+
+          <div class="step-item">
+            <div class="circle">6</div>
+
+            <div class="step-label">Payment</div>
+          </div>
         </div>
 
         <!-- STEP 1 -->
@@ -576,9 +582,74 @@
               ← Previous
             </button>
 
-            <button class="submit-btn" id="submitApplicationBtn">
-              Submit Application
+            <button
+              class="next-btn"
+              id="scheduleNextBtn"
+              onclick="nextStep()"
+              disabled
+            >
+              Next →
             </button>
+            <!-- <button class="submit-btn" id="submitApplicationBtn">
+              Submit Application
+            </button> -->
+          </div>
+        </div>
+
+        <!-- ==========================================
+     STEP 6 - PAYMENT
+========================================== -->
+
+        <div class="step" id="step6">
+          <h2>Payment</h2>
+
+          <div class="payment-container">
+            <div class="payment-summary">
+              <h3>Climbing Permit Fee</h3>
+
+              <div class="payment-amount">₱300.00</div>
+
+              <p>Please complete your payment using GCash.</p>
+            </div>
+
+            <div class="payment-qr-section">
+              <h3>GCash Payment</h3>
+
+              <p>Scan the QR code below using your GCash application.</p>
+
+              <div class="payment-qr">
+                <img
+                  src="/assets/icons/gcash-qr.png"
+                  alt="GCash Payment QR Code"
+                />
+              </div>
+
+              <p class="payment-instruction">
+                After making the payment, upload your payment receipt below.
+              </p>
+            </div>
+
+            <div class="payment-upload">
+              <label for="paymentReceipt"> Payment Receipt </label>
+
+              <input
+                type="file"
+                id="paymentReceipt"
+                accept="image/png,image/jpeg,application/pdf"
+              />
+
+              <small> Accepted formats: JPG, PNG, PDF </small>
+            </div>
+
+            <div class="navigation">
+              <button class="prev-btn" onclick="previousStep()">
+                ← Previous
+              </button>
+
+              <button class="submit-btn" id="submitApplicationBtn">
+                Submit Application
+              </button>
+            </div>
           </div>
         </div>
       </div>
