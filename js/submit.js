@@ -3,6 +3,142 @@
  * Submit Application
  *************************************************/
 
+const paymentReceiptInput = document.getElementById("paymentReceipt");
+
+const paymentReceiptStatus = document.getElementById("paymentReceiptStatus");
+
+const paymentReceiptPreview = document.getElementById("paymentReceiptPreview");
+
+const paymentReceiptImagePreview = document.getElementById(
+  "paymentReceiptImagePreview",
+);
+
+const MAX_PAYMENT_RECEIPT_SIZE = 5 * 1024 * 1024;
+
+let selectedPaymentReceipt = null;
+
+let paymentReceiptPreviewUrl = null;
+
+if (paymentReceiptInput) {
+  paymentReceiptInput.addEventListener("change", handlePaymentReceiptChange);
+}
+
+function handlePaymentReceiptChange() {
+  const file = paymentReceiptInput.files[0];
+
+  clearPaymentReceiptError();
+
+  if (!file) {
+    selectedPaymentReceipt = null;
+
+    resetPaymentReceiptDisplay();
+
+    return;
+  }
+
+  const allowedTypes = ["image/jpeg", "image/png", "application/pdf"];
+
+  if (!allowedTypes.includes(file.type)) {
+    paymentReceiptInput.value = "";
+
+    selectedPaymentReceipt = null;
+
+    showPaymentReceiptError(
+      "Invalid file type. Please upload a JPG, PNG, or PDF file.",
+    );
+
+    return;
+  }
+
+  if (file.size > MAX_PAYMENT_RECEIPT_SIZE) {
+    paymentReceiptInput.value = "";
+
+    selectedPaymentReceipt = null;
+
+    showPaymentReceiptError(
+      "File is too large. The maximum receipt size is 5 MB.",
+    );
+
+    return;
+  }
+
+  selectedPaymentReceipt = file;
+
+  paymentReceiptStatus.textContent = `Receipt selected: ${file.name} (${formatFileSize(file.size)})`;
+
+  paymentReceiptStatus.classList.add("success");
+
+  if (file.type.startsWith("image/")) {
+    if (paymentReceiptPreviewUrl) {
+      URL.revokeObjectURL(paymentReceiptPreviewUrl);
+    }
+
+    paymentReceiptPreviewUrl = URL.createObjectURL(file);
+
+    paymentReceiptImagePreview.src = paymentReceiptPreviewUrl;
+
+    paymentReceiptPreview.classList.remove("hidden");
+  } else {
+    paymentReceiptPreview.classList.add("hidden");
+  }
+}
+
+function validatePaymentReceipt() {
+  clearPaymentReceiptError();
+
+  if (!selectedPaymentReceipt) {
+    showPaymentReceiptError(
+      "Please upload your payment receipt before submitting.",
+    );
+
+    paymentReceiptInput.focus();
+
+    return false;
+  }
+
+  return true;
+}
+
+function showPaymentReceiptError(message) {
+  paymentReceiptStatus.textContent = message;
+
+  paymentReceiptStatus.classList.remove("success");
+
+  paymentReceiptStatus.classList.add("error");
+
+  paymentReceiptInput.classList.add("input-error");
+}
+
+function clearPaymentReceiptError() {
+  paymentReceiptStatus.classList.remove("error");
+
+  paymentReceiptInput.classList.remove("input-error");
+}
+
+function resetPaymentReceiptDisplay() {
+  paymentReceiptStatus.textContent = "No receipt selected.";
+
+  paymentReceiptStatus.classList.remove("success", "error");
+
+  paymentReceiptPreview.classList.add("hidden");
+
+  if (paymentReceiptPreviewUrl) {
+    URL.revokeObjectURL(paymentReceiptPreviewUrl);
+
+    paymentReceiptPreviewUrl = null;
+  }
+
+  paymentReceiptImagePreview.removeAttribute("src");
+}
+
+function formatFileSize(bytes) {
+  if (bytes < 1024 * 1024) {
+    return `${Math.ceil(bytes / 1024)} KB`;
+  }
+
+  return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+}
+
 const submitButton = document.getElementById("submitApplicationBtn");
 
 submitButton.addEventListener("click", submitApplication);
@@ -14,6 +150,12 @@ async function submitApplication() {
     showToast("Please accept the Terms and Conditions.", "warning");
 
     agreeTerms.focus();
+
+    return;
+  }
+
+  if (!validatePaymentReceipt()) {
+    showToast("Please upload your payment receipt.", "warning");
 
     return;
   }
