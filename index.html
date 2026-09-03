@@ -623,15 +623,35 @@
             </div>
 
             <div class="payment-upload">
-              <label for="paymentReceipt"> Payment Receipt </label>
+              <label for="paymentReceipt">
+                Payment Receipt
+                <span class="required-mark">*</span>
+              </label>
 
               <input
                 type="file"
                 id="paymentReceipt"
-                accept="image/png,image/jpeg,application/pdf"
+                accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf"
+                required
               />
 
-              <small> Accepted formats: JPG, PNG, PDF </small>
+              <small>
+                Accepted formats: JPG, PNG, PDF. Maximum file size: 5 MB.
+              </small>
+
+              <div id="paymentReceiptStatus" class="payment-receipt-status">
+                No receipt selected.
+              </div>
+
+              <div
+                id="paymentReceiptPreview"
+                class="payment-receipt-preview hidden"
+              >
+                <img
+                  id="paymentReceiptImagePreview"
+                  alt="Payment receipt preview"
+                />
+              </div>
             </div>
 
             <div class="navigation">
