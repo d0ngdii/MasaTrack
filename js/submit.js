@@ -64,6 +64,11 @@ function handlePaymentReceiptChange() {
 
   selectedPaymentReceipt = file;
 
+  console.log("PAYMENT RECEIPT SELECTED:", selectedPaymentReceipt);
+  console.log("FILE NAME:", selectedPaymentReceipt.name);
+  console.log("FILE TYPE:", selectedPaymentReceipt.type);
+  console.log("FILE SIZE:", selectedPaymentReceipt.size);
+
   paymentReceiptStatus.textContent = `Receipt selected: ${file.name} (${formatFileSize(file.size)})`;
 
   paymentReceiptStatus.classList.add("success");
@@ -197,7 +202,6 @@ async function submitApplication() {
   // DEBUG
   // ===========================
   debug("APPLICATION:", application);
-  debug("GROUP MEMBERS:", application.groupMembers);
   debug(application);
   debug(application.permanentAddress);
   debug(JSON.stringify(application, null, 2));
