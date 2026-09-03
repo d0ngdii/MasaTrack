@@ -247,8 +247,8 @@ async function submitApplication() {
 
     debug(result);
 
-    debug("PAYMENT RECEIPT RESULT:");
-    debug(result.paymentReceipt);
+    console.log("PAYMENT RECEIPT RESULT:");
+    console.log(result.paymentReceipt);
 
     if (result.success) {
       showToast("Application submitted successfully!", "success");
