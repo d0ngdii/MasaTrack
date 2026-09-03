@@ -139,6 +139,31 @@ function formatFileSize(bytes) {
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 }
 
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const result = reader.result;
+
+      // Remove:
+      // data:image/jpeg;base64,
+      // data:image/png;base64,
+      // data:application/pdf;base64,
+
+      const base64 = result.split(",")[1];
+
+      resolve(base64);
+    };
+
+    reader.onerror = () => {
+      reject(new Error("Unable to read the payment receipt."));
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
 const submitButton = document.getElementById("submitApplicationBtn");
 
 submitButton.addEventListener("click", submitApplication);
@@ -161,6 +186,12 @@ async function submitApplication() {
   }
 
   const application = collectApplicationData();
+
+  application.paymentReceipt = {
+    fileName: selectedPaymentReceipt.name,
+    mimeType: selectedPaymentReceipt.type,
+    data: await fileToBase64(selectedPaymentReceipt),
+  };
 
   // ===========================
   // DEBUG
